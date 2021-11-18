@@ -5,10 +5,8 @@
 		$bdd="agencia_viajes";
 
 		$conexion=mysqli_connect($servidor, $usuario, $clave, $bdd);
-		if($conexion==false){
+		if(!$conexion){
 			echo 'ERROR DE CONEXIÓN';
-		}else{
-      echo "bien conexion";
-    }
+		}
 		
 ?>
