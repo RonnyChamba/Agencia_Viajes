@@ -65,7 +65,7 @@
         <td class="table-celd table-celd-td"> <?php echo "".$fila['DESTINO_LUG']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['FACTURA_SUB']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['FACTURA_TOT']?>   </td>
-        <td class="table-celd table-celd-td"> <button data-id = "<?php echo "".$fila['COMPRA_COD']?>">Ver Compra</button>  </td>
+        <td class="table-celd table-celd-td"> <button data-id = "<?php echo "".$fila['COMPRA_COD']?>" class="btn">Ver Compra</button>  </td>
   
       </tr>
       <?php }?>
