@@ -30,7 +30,7 @@
 
     <thead class="table-head">
       <tr>
-         <th class="table-celd table-celd--th">C&oacute;dula</th>
+         <th class="table-celd table-celd--th">C&eacute;dula</th>
          <th class="table-celd table-celd--th">Tipo</th>
          <th class="table-celd table-celd--th">N&uacute;mero Asientos</th>
       </tr>
