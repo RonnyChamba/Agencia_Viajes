@@ -56,7 +56,8 @@ const filtros = {
     TIPO_TRANSPORTE_TIP: "TIPO",
   },
   TIPO_VIAJE: {
-    TIPO_VIAJE: "TIPO",
+    TIPO_VIAJE_TIP: "TIPO",
+    TIPO_VIAJE_PRE: "PRECIO",
   },
   CONDUCTOR: {
     CONDUCTOR_CED: "CEDULA",

@@ -1,7 +1,17 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
-  $sql=("SELECT * FROM TIPO_VIAJE");
+   $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($isExist =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }
+  } 
+  $numeroRegistros =0; 
+  $sql=("SELECT * FROM TIPO_VIAJE {$typeAction}");
 ?>
 
 <!DOCTYPE html>
