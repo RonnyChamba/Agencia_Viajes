@@ -9,6 +9,14 @@ h2 {
 a {
   text-decoration: none;
 }
+
+select,
+input[type="text"] {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
 .btn {
   display: inline-block;
   padding: 10px;
@@ -54,6 +62,20 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.row-form-item {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 230px;
+}
+.row-form-item label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.form--search .row--flex {
+  align-items: flex-end;
 }
 .row-button {
   width: 300px;
