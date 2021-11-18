@@ -4,6 +4,18 @@ const $selectTablas = $form["select-tabla"];
 const $selectFiltro = $form["select-filtro"];
 
 $selectTablas.addEventListener("click", () => selectedOption());
+$form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let index = $selectTablas.selectedIndex;
+  if (index != -1) {
+    let tablaSelected = $selectTablas.children[index].value;
+    let file = files[tablaSelected];
+    this.setAttribute("action", `php/${file}`);
+    this.submit();
+    return;
+  }
+  alert("Seleccione una tabla");
+});
 
 const tablas = {
   EMPLEADOS: "EMPLEADOS",
@@ -16,6 +28,18 @@ const tablas = {
   TRANSPORTE: "TRANSPORTES",
   COMPRA: "COMPRAS",
   FACTURA: "FACTURAS",
+};
+const files = {
+  EMPLEADOS: "list-empleados.php",
+  TIPO_VIAJE: "list-tipo-viaje.php",
+  LICENCIA: "list-licencias.php",
+  DESTINO: "list-destino.php",
+  CLIENTES: "list-clientes.php",
+  TIPO_TRANSPORTE: "list-tipo-transporte.php",
+  CONDUCTOR: "list-conductor.php",
+  TRANSPORTE: "list-transporte.php",
+  COMPRA: "list-compra.php",
+  FACTURA: "list-factura.php",
 };
 const filtros = {
   CLIENTES: {
@@ -79,9 +103,8 @@ function setCamposFiltro(tabla) {
     $selectFiltro.appendChild(createOptionFragment(nombreFiltros));
     return;
   }
-  console.log("Tabla no existe");
+  alert("Tabla no existe");
 }
-
 function createOptionFragment(objData) {
   let fragment = $d.createDocumentFragment();
   for (const key in objData) {
