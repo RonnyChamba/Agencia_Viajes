@@ -1,12 +1,19 @@
 <?php
   include('../conexion.php');
-   $typeAction = "";
-  $isExist = isset($_GET['action']);
-   $numeroRegistros =0;  
-  if($isExist) {
-    $param = $_GET['dni'];
-    $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
+  $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($isExist =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }else{
+        $param = $_GET['dni'];
+        $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
+    }
   } 
+  $numeroRegistros =0;  
   $sql=("SELECT * FROM CONDUCTOR  {$typeAction}");
 ?>
 

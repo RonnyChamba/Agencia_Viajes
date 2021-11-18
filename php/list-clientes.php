@@ -1,7 +1,20 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
-  $sql=("SELECT * FROM CLIENTES");
+  $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($isExist =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }else{
+        $param = $_GET['dni'];
+        $typeAction = " WHERE CLIENTES_CED = {$param} ";
+    }
+  } 
+  $numeroRegistros =0; 
+  $sql=("SELECT * FROM CLIENTES {$typeAction}");
 ?>
 
 <!DOCTYPE html>
