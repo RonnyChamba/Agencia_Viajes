@@ -1,5 +1,11 @@
 <?php
   include('../conexion.php');
+  $typeAction = "";
+  $isExist = isset($_GET['action']); 
+  if($isExist) {
+    $param = $_GET['dni'];
+    $typeAction = " WHERE CLIENTES_CED = {$param} ";
+  } 
   $sql=("SELECT  COMPRA_COD, COMPRA_FEC, COMPRA_NU_B,
                  CLIENTES_NOM, CLIENTES_APE,
                  DESTINO_LUG,
@@ -15,7 +21,7 @@
                  INNER JOIN DESTINO ON   DESTINO_COD = COMPRA_FK_DES
                  INNER JOIN TIPO_VIAJE ON TIPO_VIAJE_COD = DESTINO_FK_TI_V
                  INNER JOIN TIPO_TRANSPORTE ON TIPO_TRANSPORTE_COD = TRANSPORTE_FK_TI_T
-                 INNER JOIN CONDUCTOR ON CONDUCTOR_CED  = TRANSPORTE_FK_CON");
+                 INNER JOIN CONDUCTOR ON CONDUCTOR_CED  = TRANSPORTE_FK_CON  {$typeAction}");
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +38,9 @@
   <div class="container">
     <section class="content content--header">
       <header class="header">
-        <h1 class="title">Compras Viajes Registrados</h1>
+        <h1 class="title"> 
+        <?php echo $isExist?"Mis Compras Realizadas":"Compras Viajes Registrados" ?>        
+          </h1>
       </header>
     </section>
     <section class="content content--main">

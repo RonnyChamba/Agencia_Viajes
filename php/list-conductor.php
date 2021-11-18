@@ -46,7 +46,7 @@
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_CED']?> </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_NOM']." ".$fila['CONDUCTOR_APE']  ?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_TEL']?>   </td>
-        <td class="table-celd table-celd-td"> <button data-id = "<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn">Ver Licencias</button></td>
+        <td class="table-celd table-celd-td"> <a href = "list-licencias.php?action=individual&dni=<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn">Mis Licencias</a></td>
       </tr>
       <?php }?>
 
