@@ -58,6 +58,7 @@ a {
 .row-button {
   width: 300px;
 }
+
 .row-button:nth-child(2) {
   margin-left: 20px;
 }
