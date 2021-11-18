@@ -26,9 +26,9 @@
       if($resultado= mysqli_query($conexion, $sql))
    {
     ?>
-    <table>
+    <table class="table">
 
-    <thead>
+    <thead class="table-head">
       <tr>
          <th class="table-celd table-celd--th">C&eacute;dula</th>
          <th class="table-celd table-celd--th">Nombres</th>
@@ -40,7 +40,7 @@
          <th class="table-celd table-celd--th">Estudios</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-body">
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
@@ -65,7 +65,7 @@
 
       echo "<p>Surgio un error al consultar los datos</p>";
     } ?>
-    <p> <a href="/index.html">Regresar al menú</a></p>
+    <p> <a href="/index.html" class="link link--return">Regresar al menú</a></p>
     </section>
   </div>
 </body>
