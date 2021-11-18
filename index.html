@@ -9,30 +9,36 @@
       href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="content">
+    <div class="container container--grid">
+      <section class="content content--header">
         <header class="header">
           <h1 class="title">Consultas Generales</h1>
         </header>
+      </section>
+      <section class="content content--main">
         <form
           action="
-        "
+          "
           class="form"
         >
+          <div class="row">
+            <h2 class="subtitle">Modulos Disponibles</h2>
+          </div>
           <div class="content-button">
-            <div class="row">
+            <div class="row row--flex">
               <div class="row-button">
-                <span class="icon-people"></span
-                ><input type="submit" class="btn" value=" Ver Clientes" />
+                <span class="icon-people"></span>
+                <input type="submit" class="btn" value=" Ver Clientes" />
               </div>
               <div class="row-button">
                 <span class="icon-user"></span
                 ><input type="submit" class="btn" value="Ver Empleados" />
               </div>
             </div>
-            <div class="row">
+            <div class="row row--flex">
               <div class="row-button">
                 <span class="icon-split"></span
                 ><input type="submit" class="btn" value="Ver Conductores" />
@@ -42,7 +48,7 @@
                 ><input type="submit" class="btn" value="Transporte" />
               </div>
             </div>
-            <div class="row">
+            <div class="row row--flex">
               <div class="row-button">
                 <span class="icon-bed"></span
                 ><input type="submit" class="btn" value="Ver Tipo Viajes" />
@@ -52,7 +58,7 @@
                 ><input type="submit" class="btn" value="Ver Tipo Transporte" />
               </div>
             </div>
-            <div class="row">
+            <div class="row row--flex">
               <div class="row-button">
                 <span class="icon-vcard"></span
                 ><input type="submit" class="btn" value="Ver Licencias" />
@@ -62,7 +68,7 @@
                 ><input type="submit" class="btn" value="Ver Destinos" />
               </div>
             </div>
-            <div class="row">
+            <div class="row row--flex">
               <div class="row-button">
                 <span class="icon-package"></span
                 ><input type="submit" class="btn" value="Ver compras" />
@@ -74,7 +80,7 @@
             </div>
           </div>
         </form>
-      </div>
+      </section>
     </div>
   </body>
 </html>

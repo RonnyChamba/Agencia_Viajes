@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2 {
+  margin-top: 0px;
+}
+input[type="submit"],
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type="submit"]:hover,
+button:hover {
+  opacity: 0.8;
+}
+.container {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+.container--grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  color: royalblue;
+  font-size: 2.5em;
+}
+.subtitle {
+  color: darkred;
+}
+.content {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+.row--flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row-button {
+  width: 250px;
+  /* background-color: rgb(0 0 0 /0.3); */
+}
+.row-button:nth-child(2) {
+  margin-left: 20px;
+}
+
+.row-button input[type="submit"] {
+  display: inline-block;
+  width: 200px;
+  font-size: 1.1em;
+  background-color: royalblue;
+  color: #fff;
+}
+.row-button [class^="icon-"] {
+  margin-right: 10px;
+  font-size: 1.3em;
+  color: darkmagenta;
+}
