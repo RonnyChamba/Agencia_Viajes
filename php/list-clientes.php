@@ -38,6 +38,7 @@
          <th class="table-celd table-celd--th">Estado</th>
          <th class="table-celd table-celd--th">Tel&eacute;fono</th>
          <th class="table-celd table-celd--th">Estudios</th>
+         <th class="table-celd table-celd--th"></th>
       </tr>
     </thead>
     <tbody class="table-body">
@@ -55,6 +56,7 @@
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CLIENTES_ES_C']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CLIENTES_TEL']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CLIENTES_ES_R']?>   </td>
+        <td class="table-celd table-celd-td"> <a href= "list-compra.php?action=individual&dni=<?php echo "".$fila['CLIENTES_CED']?>" class="btn" >Mis Compras</a></td>
       </tr>
       <?php }?>
 
