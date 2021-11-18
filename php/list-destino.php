@@ -1,5 +1,6 @@
 <?php
   include('../conexion.php');
+  $numeroRegistros =0; 
   $sql=("SELECT  DESTINO_COD, DESTINO_LUG, DESTINO_DIR, DESTINO_CIU, DESTINO_PAI,
           TIPO_VIAJE_TIP, TIPO_VIAJE_DES, TIPO_VIAJE_PRE
           FROM DESTINO
@@ -46,6 +47,7 @@
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
+           $numeroRegistros +=1;
       ?>
 
       <tr>
@@ -62,6 +64,7 @@
 
     </tbody>
     </table>
+        <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
     <?php }else{
 
       echo "<p>Surgio un error al consultar los datos</p>";

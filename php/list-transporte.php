@@ -1,5 +1,6 @@
 <?php
   include('../conexion.php');
+    $numeroRegistros =0; 
   $sql=("SELECT TRANSPORTE_COD, TRANSPORTE_MAT, TRANSPORTE_COL, TRANSPORTE_AG_F,
                 TIPO_TRANSPORTE_NOM, TIPO_TRANSPORTE_ASI,
                 CONDUCTOR_NOM, CONDUCTOR_APE 
@@ -48,6 +49,7 @@
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
+           $numeroRegistros +=1;
       ?>
 
       <tr>
@@ -62,6 +64,7 @@
       <?php }?>
     </tbody>
     </table>
+    <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
     <?php }else{
 
       echo "<p>Surgio un error al consultar los datos</p>";

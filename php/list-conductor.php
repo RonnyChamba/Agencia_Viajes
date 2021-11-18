@@ -1,6 +1,13 @@
 <?php
   include('../conexion.php');
-  $sql=("SELECT * FROM CONDUCTOR");
+   $typeAction = "";
+  $isExist = isset($_GET['action']);
+   $numeroRegistros =0;  
+  if($isExist) {
+    $param = $_GET['dni'];
+    $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
+  } 
+  $sql=("SELECT * FROM CONDUCTOR  {$typeAction}");
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +24,10 @@
   <div class="container">
     <section class="content content--header">
       <header class="header">
-        <h1 class="title">Conductores Registrados</h1>
+        <h1 class="title">
+          <?php echo $isExist?"Mis Datos Conductor":"Conductores Registrados" ?>   
+        
+        </h1>
       </header>
     </section>
     <section class="content content--main">
@@ -25,6 +35,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+      if ($isExist){
+        echo "<p class ='datos'> <a  href='list-conductor.php' class ='btn btn--datos'>Ver Todos Conductores</a> </p>";
+      }
     ?>
     <table class="table">
 
@@ -40,19 +53,21 @@
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
+            $numeroRegistros +=1;
       ?>
 
       <tr>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_CED']?> </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_NOM']." ".$fila['CONDUCTOR_APE']  ?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_TEL']?>   </td>
-        <td class="table-celd table-celd-td"> <a href = "list-licencias.php?action=individual&dni=<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn">Mis Licencias</a></td>
+        <td class="table-celd table-celd-td"> <a href = "list-licencias.php?action=individual&dni=<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn btn--table">Mis Licencias</a></td>
       </tr>
       <?php }?>
 
 
     </tbody>
     </table>
+      <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
     <?php }else{
 
       echo "<p>Surgio un error al consultar los datos</p>";

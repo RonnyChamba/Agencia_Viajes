@@ -1,5 +1,6 @@
 <?php
   include('../conexion.php');
+    $numeroRegistros =0; 
   $sql=("SELECT  FACTURA_COD, FACTURA_FEC, FACTURA_SUB, FACTURA_TOT, COMPRA_COD,
                  COMPRA_NU_B,
                  TIPO_VIAJE_PRE,
@@ -54,6 +55,7 @@
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
+           $numeroRegistros +=1;
       ?>
 
       <tr>
@@ -65,12 +67,13 @@
         <td class="table-celd table-celd-td"> <?php echo "".$fila['DESTINO_LUG']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['FACTURA_SUB']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['FACTURA_TOT']?>   </td>
-        <td class="table-celd table-celd-td"> <a href = "list-compra.php?action=individual&cod=<?php echo "".$fila['COMPRA_COD']?>" class="btn">Ver Compra</a>  </td>
+        <td class="table-celd table-celd-td"> <a href = "list-compra.php?action=individual&dni=<?php echo "".$fila['COMPRA_COD']?>&factura=si" class="btn btn--table">Ver Compra</a>  </td>
   
       </tr>
       <?php }?>
     </tbody>
     </table>
+      <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
     <?php }else{
 
       echo "<p>Surgio un error al consultar los datos</p>";

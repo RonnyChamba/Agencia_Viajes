@@ -1,10 +1,20 @@
 <?php
   include('../conexion.php');
   $typeAction = "";
-  $isExist = isset($_GET['action']); 
+  $title = "Compras Viajes Registrados";
+  $isExist = isset($_GET['action']);
+  $numeroRegistros =0; 
   if($isExist) {
     $param = $_GET['dni'];
-    $typeAction = " WHERE CLIENTES_CED = {$param} ";
+    $typeAction ="WHERE ";
+    if (isset($_GET['factura'])){
+      $title ="Detalle Compra Factura";
+      $typeAction = "{$typeAction} COMPRA_COD =";
+    }else{
+       $title ="Mis Compras Realizadas";
+      $typeAction ="{$typeAction} CLIENTES_CED =";
+    }
+    $typeAction =  "{$typeAction} {$param}";
   } 
   $sql=("SELECT  COMPRA_COD, COMPRA_FEC, COMPRA_NU_B,
                  CLIENTES_NOM, CLIENTES_APE,
@@ -39,7 +49,7 @@
     <section class="content content--header">
       <header class="header">
         <h1 class="title"> 
-        <?php echo $isExist?"Mis Compras Realizadas":"Compras Viajes Registrados" ?>        
+        <?php echo $title ?>        
           </h1>
       </header>
     </section>
@@ -48,6 +58,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+      if ($isExist){
+        echo "<p class ='datos'> <a  href='list-compra.php' class ='btn btn--datos'>Ver Todas Compras</a> </p>";
+      }
     ?>
     <table class="table">
 
@@ -68,6 +81,7 @@
      <?php
           while($fila=mysqli_fetch_assoc($resultado))
        {
+         $numeroRegistros +=1;
       ?>
 
       <tr>
@@ -85,6 +99,7 @@
       <?php }?>
     </tbody>
     </table>
+    <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
     <?php }else{
 
       echo "<p>Surgio un error al consultar los datos</p>";
