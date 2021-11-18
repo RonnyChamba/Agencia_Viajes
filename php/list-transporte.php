@@ -1,12 +1,23 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
+
+   $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($isExist =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }
+  }
+  $numeroRegistros =0; 
   $sql=("SELECT TRANSPORTE_COD, TRANSPORTE_MAT, TRANSPORTE_COL, TRANSPORTE_AG_F,
                 TIPO_TRANSPORTE_NOM, TIPO_TRANSPORTE_ASI,
                 CONDUCTOR_NOM, CONDUCTOR_APE 
                 FROM TIPO_TRANSPORTE
                 INNER JOIN TRANSPORTE ON TRANSPORTE_FK_TI_T= TIPO_TRANSPORTE_COD
-                INNER JOIN CONDUCTOR ON TRANSPORTE_FK_CON= CONDUCTOR_CED");
+                INNER JOIN CONDUCTOR ON TRANSPORTE_FK_CON= CONDUCTOR_CED {$typeAction}");
 ?>
 
 <!DOCTYPE html>
