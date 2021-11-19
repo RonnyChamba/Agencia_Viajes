@@ -71,6 +71,10 @@
 
     </tbody>
     </table>
+     
+     <?php
+       if ($numeroRegistros==0) echo "<p class= 'datos datos-no-registros'>No hay Tipos de Transportes para mostrar</p>";    
+      ?>
     <p class="datos"> <span class="numero-registros">  Numero de registros:  <?php  echo "".$numeroRegistros ?></span></p>
 
     <?php }else{
