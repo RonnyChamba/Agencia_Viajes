@@ -5,7 +5,7 @@
   $typeAction = "";
    if($isExist) {
     $param = "";
-    if ($isExist =="search"){
+    if ($_REQUEST['action'] =="search"){
        $paramCampo = $_POST['select-filtro'];
        $param = $_POST["busqueda"];
        $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
@@ -40,6 +40,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+     
+    echo "<p class ='datos'> <a  href='list-empleados.php' class ='btn btn--datos'>Ver Todos Empleados</a> </p>";
+      
     ?>
     <table class="table">
 

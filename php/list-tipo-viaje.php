@@ -36,6 +36,7 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+      echo "<p class ='datos'> <a  href='list-tipo-viaje.php' class ='btn btn--datos'>Ver Todos Tipos</a> </p>";
     ?>
     <table class="table">
 

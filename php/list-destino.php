@@ -1,10 +1,20 @@
 <?php
   include('../conexion.php');
+  $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($_REQUEST['action'] =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }
+  } 
   $numeroRegistros =0; 
   $sql=("SELECT  DESTINO_COD, DESTINO_LUG, DESTINO_DIR, DESTINO_CIU, DESTINO_PAI,
           TIPO_VIAJE_TIP, TIPO_VIAJE_DES, TIPO_VIAJE_PRE
           FROM DESTINO
-          INNER JOIN TIPO_VIAJE ON DESTINO_FK_TI_V = TIPO_VIAJE_COD");
+          INNER JOIN TIPO_VIAJE ON DESTINO_FK_TI_V = TIPO_VIAJE_COD {$typeAction}");
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +38,9 @@
 
     <?php
       if($resultado= mysqli_query($conexion, $sql))
+      
    {
+      echo "<p class ='datos'> <a  href='list-destino.php' class ='btn btn--datos'>Ver Todos Destinos</a> </p>";
     ?>
     <table class="table">
 

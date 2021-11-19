@@ -1,7 +1,17 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
-  $sql=("SELECT * FROM TIPO_TRANSPORTE");
+   $isExist=  isset($_POST["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($_REQUEST['action'] =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }
+  } 
+  $numeroRegistros =0; 
+  $sql=("SELECT * FROM TIPO_TRANSPORTE {$typeAction}");
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +36,7 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+      echo "<p class ='datos'> <a  href='list-tipo-transporte.php' class ='btn btn--datos'>Ver Todos Tipos</a> </p>";
     ?>
     <table class="table">
 

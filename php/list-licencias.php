@@ -1,13 +1,20 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
- $typeAction = "";
-  $isExist = isset($_GET['action']); 
-  if($isExist) {
-    $param = $_GET['dni'];
-    $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
-  } 
-
+  $isExist=  isset($_POST["action"]);
+  if (!$isExist) $isExist = isset($_GET["action"]);
+  $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($_REQUEST["action"] =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }else{
+        $param = $_GET['dni'];
+        $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
+    } 
+  }
+  $numeroRegistros =0; 
   $sql=("SELECT  LICENCIA_TIP, LICENCIA_FE_I, LICENCIA_FE_F,
                  CONDUCTOR_CED, CONDUCTOR_NOM, CONDUCTOR_APE 
                  FROM LICENCIA
@@ -38,9 +45,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
-      if ($isExist){
-        echo "<p class ='datos'> <a  href='list-licencias.php' class ='btn btn--datos'>Ver Todas licencias</a> </p>";
-      }
+      
+    echo "<p class ='datos'> <a  href='list-licencias.php' class ='btn btn--datos'>Ver Todas Licencias</a> </p>";
+      
     ?>
     <table class="table">
 
@@ -50,14 +57,8 @@
          <th class="table-celd table-celd--th">Fecha Expedici&oacute;n</th>
          <th class="table-celd table-celd--th">Fecha Expiraci&oacute;n</th>
          <th class="table-celd table-celd--th">Conductor</th>
-
-         <?php
-         if (!$isExist){
-           ?>
-            <th class="table-celd table-celd--th"></th>
-           <?php
-         }
-         ?>
+        <th class="table-celd table-celd--th"></th>
+       
         
       </tr>
     </thead>
@@ -73,14 +74,7 @@
         <td class="table-celd table-celd-td"> <?php echo "".$fila['LICENCIA_FE_I']?>   </td>
         <td class="table-celd table-celd-td"> <?php echo "".$fila['LICENCIA_FE_F']?>   </td>
          <td class="table-celd table-celd-td"> <?php echo "".$fila['CONDUCTOR_NOM']." ".$fila['CONDUCTOR_APE']  ?>   </td>
-
-        <?php
-         if (!$isExist){
-           ?>
-           <td class="table-celd table-celd-td"> <a href= "list-conductor.php?action=individual&dni=<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn btn--table" >Ver Conductor</a></td>
-           <?php
-         }
-         ?>
+        <td class="table-celd table-celd-td"> <a href= "list-conductor.php?action=individual&dni=<?php echo "".$fila['CONDUCTOR_CED']?>" class="btn btn--table" >Ver Conductor</a></td>
       </tr>
       <?php }?>
 

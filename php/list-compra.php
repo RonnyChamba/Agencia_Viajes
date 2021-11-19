@@ -58,9 +58,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
-      if ($isExist){
-        echo "<p class ='datos'> <a  href='list-compra.php' class ='btn btn--datos'>Ver Todas Compras</a> </p>";
-      }
+      
+    echo "<p class ='datos'> <a  href='list-compra.php' class ='btn btn--datos'>Ver Todas Compras</a> </p>";
+      
     ?>
     <table class="table">
 

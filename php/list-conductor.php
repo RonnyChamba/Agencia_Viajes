@@ -1,18 +1,19 @@
 <?php
   include('../conexion.php');
   $isExist=  isset($_POST["action"]);
+   if (!$isExist) $isExist = isset($_GET["action"]);
   $typeAction = "";
    if($isExist) {
     $param = "";
-    if ($isExist =="search"){
+    if ($_REQUEST['action'] =="search"){
        $paramCampo = $_POST['select-filtro'];
        $param = $_POST["busqueda"];
        $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
     }else{
         $param = $_GET['dni'];
         $typeAction = " WHERE CONDUCTOR_CED = {$param} ";
-    }
-  } 
+    } 
+  }
   $numeroRegistros =0;  
   $sql=("SELECT * FROM CONDUCTOR  {$typeAction}");
 ?>
@@ -42,9 +43,9 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
-      if ($isExist){
-        echo "<p class ='datos'> <a  href='list-conductor.php' class ='btn btn--datos'>Ver Todos Conductores</a> </p>";
-      }
+     
+      echo "<p class ='datos'> <a  href='list-conductor.php' class ='btn btn--datos'>Ver Todos Conductores</a> </p>";
+      
     ?>
     <table class="table">
 
