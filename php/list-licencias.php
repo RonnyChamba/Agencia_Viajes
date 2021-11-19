@@ -28,16 +28,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Licencias</title>
+   <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   
   <div class="container">
     <section class="content content--header">
-      <header class="header">
+      <header class="header header--flex">
         <h1 class="title">
         <?php echo $isExist?"Mis Licencias":"Licencias Registradas Conductores" ?>  
         </h1>
+        <p class="icon-github">
+            <a href="https://github.com/RonnyChamba/Agencia_Viajes" target="_blank" class="link">Descargar Proyecto</a>
+          </p>
       </header>
     </section>
     <section class="content content--main">
