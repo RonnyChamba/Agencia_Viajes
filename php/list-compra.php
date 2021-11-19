@@ -1,20 +1,27 @@
 <?php
   include('../conexion.php');
+  $isExist = isset($_POST['action']);
+  if (!$isExist) $isExist = isset($_GET["action"]);
   $typeAction = "";
   $title = "Compras Viajes Registrados";
-  $isExist = isset($_GET['action']);
   $numeroRegistros =0; 
   if($isExist) {
-    $param = $_GET['dni'];
-    $typeAction ="WHERE ";
-    if (isset($_GET['factura'])){
-      $title ="Detalle Compra Factura";
-      $typeAction = "{$typeAction} COMPRA_COD =";
-    }else{
-       $title ="Mis Compras Realizadas";
-      $typeAction ="{$typeAction} CLIENTES_CED =";
+    if ($_REQUEST['action'] =="search"){
+      $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+
     }
-    $typeAction =  "{$typeAction} {$param}";
+    else if (  isset($_REQUEST['factura'])){
+        $param = $_GET['dni']; 
+      $title ="Detalle Compra Factura";
+       $typeAction = "WHERE {$typeAction} COMPRA_COD = {$param}";
+    }else{
+          $param = $_GET['dni']; 
+         $title ="Mis Compras Realizadas";
+        $typeAction ="WHERE {$typeAction} CLIENTES_CED = {$param} ";
+    }
+
   } 
   $sql=("SELECT  COMPRA_COD, COMPRA_FEC, COMPRA_NU_B,
                  CLIENTES_NOM, CLIENTES_APE,
