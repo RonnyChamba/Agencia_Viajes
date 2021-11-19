@@ -1,6 +1,18 @@
 <?php
   include('../conexion.php');
-    $numeroRegistros =0; 
+   $isExist=  isset($_POST["action"]);
+    $typeAction = "";
+   if($isExist) {
+    $param = "";
+    if ($_REQUEST['action'] =="search"){
+       $paramCampo = $_POST['select-filtro'];
+       $param = $_POST["busqueda"];
+       $typeAction = "WHERE {$paramCampo} LIKE '{$param}'";
+    }
+  } 
+  
+
+  $numeroRegistros =0; 
   $sql=("SELECT  FACTURA_COD, FACTURA_FEC, FACTURA_SUB, FACTURA_TOT, COMPRA_COD,
                  COMPRA_NU_B,
                  TIPO_VIAJE_PRE,
@@ -10,7 +22,7 @@
                 INNER JOIN COMPRA ON COMPRA_COD = FACTURA_FK_COM
                 INNER JOIN CLIENTES  ON CLIENTES_CED = COMPRA_FK_CLI
                 INNER JOIN DESTINO ON   DESTINO_COD = COMPRA_FK_DES
-                INNER JOIN TIPO_VIAJE ON TIPO_VIAJE_COD = DESTINO_FK_TI_V");
+                INNER JOIN TIPO_VIAJE ON TIPO_VIAJE_COD = DESTINO_FK_TI_V  {$typeAction}");
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +47,8 @@
     <?php
       if($resultado= mysqli_query($conexion, $sql))
    {
+    echo "<p class ='datos'> <a  href='list-facturas.php' class ='btn btn--datos'>Ver Todas Facturas</a> </p>";
+
     ?>
     <table class="table">
 

@@ -39,7 +39,7 @@ const files = {
   CONDUCTOR: "list-conductor.php",
   TRANSPORTE: "list-transporte.php",
   COMPRA: "list-compra.php",
-  FACTURA: "list-factura.php",
+  FACTURA: "list-facturas.php",
 };
 const filtros = {
   CLIENTES: {
@@ -90,7 +90,9 @@ const filtros = {
     TIPO_TRANSPORTE_NOM: "TIPO TRANSPORTE",
   },
   FACTURA: {
-    FACTURA_COD: "CODIGO",
+    FACTURA_COD: "CODIGO FACTURA",
+    COMPRA_COD: "CODIGO COMPRA",
+    CLIENTES_APE: "APELLIDO CLIENTE",
   },
 };
 
