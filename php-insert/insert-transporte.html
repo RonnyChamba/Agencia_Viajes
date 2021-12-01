@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo Transporte</title>
+    <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style2.css" />
+  </head>
+  <body>
+    <div class="container container--flex">
+      <section class="content content--header">
+        <header class="header header--flex">
+          <h1 class="title">Registrar Nuevo Transporte</h1>
+          <p class="icon-github">
+            <a
+              href="https://github.com/RonnyChamba/Agencia_Viajes"
+              target="_blank"
+              class="link"
+              >Descargar Proyecto</a
+            >
+          </p>
+        </header>
+      </section>
+      <section class="content content--main">
+        <form
+          action="#"
+          method="post"
+          name="form-insert-transporte"
+          class="form form-transporte"
+        >
+          <div class="form-content form-content--grid">
+            <div class="row">
+              <label for="matricula" class="form__label">Matricula:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="matricula"
+                id="matricula"
+                placeholder=""
+              />
+            </div>
+            <div class="row">
+              <label for="agnio-fabricacion" class="form__label"
+                >Año fabricaci&oacute;n</label
+              ><input
+                type="text"
+                class="form__input"
+                name="agnio-fabricacion"
+                id="agnio-fabricacion"
+                placeholder="Ejem: 1999"
+              />
+            </div>
+            <div class="row col-2">
+              <label for="color" class="form__label">Color:</label
+              ><input type="text" class="form__input" name="color" id="color" />
+            </div>
+            <div class="row">
+              <label for="">Seleccionar un tipo transporte</label>
+              <button class="btn form-select" id="select-conductor">
+                Seleccionar
+              </button>
+            </div>
+            <div class="row">
+              <label for="">Seleccionar un conductor</label>
+              <button class="btn form-select" id="select-conductor">
+                Seleccionar
+              </button>
+            </div>
+
+            <div class="row col-2 row--flex">
+              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input type="reset" value="Limpiar" class="btn btn--reset" />
+            </div>
+          </div>
+        </form>
+        <p>
+          <a href="/index.html" class="link link--return">Regresar al menú</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
