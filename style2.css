@@ -7,6 +7,10 @@
 .form .btn {
   width: 250px;
 }
+.form .form-select {
+  width: 100%;
+  background-color: limegreen;
+}
 .form__label {
   font-weight: 500;
   font-size: 1.1em;
