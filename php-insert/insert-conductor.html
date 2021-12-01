@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo Conductor</title>
+    <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style2.css" />
+  </head>
+  <body>
+    <div class="container container--flex">
+      <section class="content content--header">
+        <header class="header header--flex">
+          <h1 class="title">Registrar Nuevo Conductor</h1>
+          <p class="icon-github">
+            <a
+              href="https://github.com/RonnyChamba/Agencia_Viajes"
+              target="_blank"
+              class="link"
+              >Descargar Proyecto</a
+            >
+          </p>
+        </header>
+      </section>
+      <section class="content content--main">
+        <form
+          action="#"
+          method="post"
+          name="form-insert-clientes"
+          class="form form-clientes"
+        >
+          <div class="form-content form-content--grid">
+            <div class="row">
+              <label for="cedula" class="form__label">C&eacute;dula:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="cedula"
+                id="cedula"
+              />
+            </div>
+            <div class="row">
+              <label for="nombres" class="form__label">Nombres:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="nombres"
+                id="nombres"
+              />
+            </div>
+            <div class="row">
+              <label for="apellidos" class="form__label">Apellidos:</label
+              ><input type="text" class="form__input" name="apellidos" />
+            </div>
+            <div class="row">
+              <label for="telefono" class="form__label">T&eacute;lefono</label
+              ><input
+                type="text"
+                class="form__input"
+                name="telefono"
+                id="telefono"
+              />
+            </div>
+            <div class="row col-2">
+              <label for="direccion" class="form__label"
+                >Direcci&oacute;n:</label
+              ><input type="text" class="form__input" dir="direccion" />
+            </div>
+            <div class="row col-2 row--flex">
+              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input type="reset" value="Limpiar" class="btn btn--reset" />
+            </div>
+          </div>
+        </form>
+        <p>
+          <a href="/index.html" class="link link--return">Regresar al menú</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
