@@ -1,0 +1,36 @@
+.form {
+  max-width: 800px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form .btn {
+  width: 250px;
+}
+.form__label {
+  font-weight: 500;
+  font-size: 1.1em;
+}
+.form-content {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: lightcyan;
+  box-shadow: 2px 2px 5px rgb(0 0 0 /0.5), -2px -2px 5px rgb(0 0 0 /0.5);
+}
+.form-content--grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-content--grid .col-2 {
+  grid-column: span 2;
+}
+
+.form-content--grid .row {
+  margin: 0;
+}
+
+.form .row {
+  justify-content: space-around;
+}

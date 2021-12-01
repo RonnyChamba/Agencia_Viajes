@@ -11,7 +11,8 @@ a {
 }
 
 select,
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
   display: inline-block;
   width: 100%;
   padding: 10px;
@@ -28,6 +29,9 @@ input[type="text"] {
   background-color: royalblue;
   color: #fff;
   text-align: center;
+}
+.btn--reset {
+  background-color: gray;
 }
 .btn:hover {
   opacity: 0.8;
