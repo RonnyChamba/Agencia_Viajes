@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuevo Destino</title>
+    <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style2.css" />
+  </head>
+  <body>
+    <div class="container container--flex">
+      <section class="content content--header">
+        <header class="header header--flex">
+          <h1 class="title">Registrar Nuevo Destino</h1>
+          <p class="icon-github">
+            <a
+              href="https://github.com/RonnyChamba/Agencia_Viajes"
+              target="_blank"
+              class="link"
+              >Descargar Proyecto</a
+            >
+          </p>
+        </header>
+      </section>
+      <section class="content content--main">
+        <form
+          action="#"
+          method="post"
+          name="form-insert-destino"
+          class="form form-destino"
+        >
+          <div class="form-content form-content--grid">
+            <div class="row">
+              <label for="lugar" class="form__label">Lugar:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="lugar"
+                id="lugar"
+                placeholder=""
+              />
+            </div>
+            <div class="row">
+              <label for="pais" class="form__label">Direcci&oacute;n</label
+              ><input
+                type="text"
+                class="form__input"
+                name="direccion"
+                id="direccion"
+                placeholder=""
+              />
+            </div>
+            <div class="row">
+              <label for="ciudad" class="form__label">Ciudad:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="ciudad"
+                id="ciudad"
+              />
+            </div>
+            <div class="row">
+              <label for="pais" class="form__label">Pais:</label
+              ><input type="text" class="form__input" name="pais" id="pais" />
+            </div>
+            <div class="row">
+              <label for="">Seleccionar un tipo viaje</label>
+              <button class="btn form-select" id="select-tipo-viaje">
+                Seleccionar
+              </button>
+            </div>
+
+            <div class="row col-2 row--flex">
+              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input type="reset" value="Limpiar" class="btn btn--reset" />
+            </div>
+          </div>
+        </form>
+        <p>
+          <a href="/index.html" class="link link--return">Regresar al menú</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
