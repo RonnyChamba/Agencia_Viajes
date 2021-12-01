@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style2.css" />
   </head>
   <body>
     <div class="container container--flex">
@@ -33,71 +34,81 @@
           name="form-insert-clientes"
           class="form form-clientes"
         >
-          <div class="row">
-            <label for="cedula" class="form__label">C&eacute;dula:</label
-            ><input type="text" class="form__input" name="cedula" id="cedula" />
-          </div>
-          <div class="row">
-            <label for="nombres" class="form__label">Nombres:</label
-            ><input
-              type="text"
-              class="form__input"
-              name="nombres"
-              id="nombres"
-            />
-          </div>
-          <div class="row">
-            <label for="apellidos" class="form__label">Apellidos:</label
-            ><input type="text" class="form__input" name="apellidos" />
-          </div>
-          <div class="row">
-            <label for="direccion" class="form__label">Direcci&oacute;n:</label
-            ><input type="text" class="form__input" dir="direccion" />
-          </div>
-          <div class="row">
-            <label for="edad" class="form__label">Edad:</label
-            ><input type="number" class="form__input" name="edad" />
-          </div>
-          <div class="row">
-            <label for="agnio" class="form__label">Año nacimiento</label
-            ><input
-              type="text"
-              class="form__input"
-              id="agnio"
-              placeholder="Cuatro números"
-            />
-          </div>
-          <div class="row">
-            <label for="estado" class="form__label">Estado civil:</label>
-            <select name="estado" id="estado">
-              <option value="SOLTERO">Soltero</option>
-              <option value="CASADO">Casado</option>
-              <option value="VIUDO">Viudo</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="telefono" class="form__label">T&eacute;lefono</label
-            ><input
-              type="text"
-              class="form__input"
-              name="telefono"
-              id="telefono"
-            />
-          </div>
-          <div class="row">
-            <label for="estudios" class="form__label">Saldo:</label
-            ><input
-              type="number"
-              class="form__input"
-              name="estudios"
-              id="estudios"
-            />
-          </div>
-          <div class="row">
-            <input type="submit" value="Guardar" class="btn btn-send" />
+          <div class="form-content form-content--grid">
+            <div class="row">
+              <label for="cedula" class="form__label">C&eacute;dula:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="cedula"
+                id="cedula"
+              />
+            </div>
+            <div class="row">
+              <label for="nombres" class="form__label">Nombres:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="nombres"
+                id="nombres"
+              />
+            </div>
+            <div class="row">
+              <label for="apellidos" class="form__label">Apellidos:</label
+              ><input type="text" class="form__input" name="apellidos" />
+            </div>
+            <div class="row">
+              <label for="direccion" class="form__label"
+                >Direcci&oacute;n:</label
+              ><input type="text" class="form__input" dir="direccion" />
+            </div>
+            <div class="row">
+              <label for="edad" class="form__label">Edad:</label
+              ><input type="number" class="form__input" name="edad" />
+            </div>
+
+            <div class="row">
+              <label for="agnio" class="form__label">Año nacimiento</label
+              ><input
+                type="text"
+                class="form__input"
+                id="agnio"
+                placeholder="Cuatro números"
+              />
+            </div>
+            <div class="row">
+              <label for="estado" class="form__label">Estado civil:</label>
+              <select name="estado" id="estado">
+                <option value="SOLTERO">Soltero</option>
+                <option value="CASADO">Casado</option>
+                <option value="VIUDO">Viudo</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <label for="telefono" class="form__label">T&eacute;lefono</label
+              ><input
+                type="text"
+                class="form__input"
+                name="telefono"
+                id="telefono"
+              />
+            </div>
+            <div class="row col-2">
+              <label for="sueldo" class="form__label">Sueldo:</label
+              ><input
+                type="number"
+                class="form__input"
+                name="sueldo"
+                id="sueldo"
+              />
+            </div>
+            <div class="row col-2 row--flex">
+              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input type="reset" value="Limpiar" class="btn btn--reset" />
+            </div>
           </div>
         </form>
-
         <p>
           <a href="/index.html" class="link link--return">Regresar al menú</a>
         </p>
