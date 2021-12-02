@@ -12,6 +12,8 @@
       $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '$filtro'"; 
     }else if ($tabla=="tipo-transporte"){
       $sql ="SELECT * FROM TIPO_TRANSPORTE WHERE TIPO_TRANSPORTE_NOM LIKE '$filtro'"; 
+    }else if ($tabla=="conductor"){
+      $sql ="SELECT * FROM CONDUCTOR WHERE CONDUCTOR_CED LIKE '$filtro'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);

@@ -29,10 +29,10 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action="../php/php-sql-insert/sql-insert-conductor.php"
           method="post"
-          name="form-insert-clientes"
-          class="form form-clientes"
+          name="form-insert-conductor"
+          class="form form-conductor"
         >
           <div class="form-content form-content--grid">
             <div class="row">
@@ -42,6 +42,8 @@
                 class="form__input"
                 name="cedula"
                 id="cedula"
+                required
+                placeholder="Campo obligatorio"
               />
             </div>
             <div class="row">
@@ -51,11 +53,20 @@
                 class="form__input"
                 name="nombres"
                 id="nombres"
+                required
+                placeholder="Campo obligatorio"
               />
             </div>
             <div class="row">
               <label for="apellidos" class="form__label">Apellidos:</label
-              ><input type="text" class="form__input" name="apellidos" />
+              ><input
+                type="text"
+                class="form__input"
+                name="apellidos"
+                id="apellidos"
+                required
+                placeholder="Campo obligatorio"
+              />
             </div>
             <div class="row">
               <label for="telefono" class="form__label">T&eacute;lefono</label
@@ -65,11 +76,6 @@
                 name="telefono"
                 id="telefono"
               />
-            </div>
-            <div class="row col-2">
-              <label for="direccion" class="form__label"
-                >Direcci&oacute;n:</label
-              ><input type="text" class="form__input" dir="direccion" />
             </div>
             <div class="row col-2 row--flex">
               <input type="submit" value="Guardar" class="btn btn--send" />
@@ -82,5 +88,21 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a href="../php/list-conductor.php" class="btn" target="_blank"
+              >Ver Conductores</a
+            >
+            <button class="btn">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/conductor.js" type="module"></script>
   </body>
 </html>
