@@ -10,7 +10,8 @@
       $sql ="SELECT * FROM EMPLEADOS WHERE EMPLEADOS_CED LIKE '$filtro'";
     }else if ($tabla=="clientes"){
       $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '$filtro'"; 
-      // LIKE '{$_REQUEST['cedula']}'"; 
+    }else if ($tabla=="tipo-transporte"){
+      $sql ="SELECT * FROM TIPO_TRANSPORTE WHERE TIPO_TRANSPORTE_NOM LIKE '$filtro'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);

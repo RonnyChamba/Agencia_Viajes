@@ -42,13 +42,19 @@
                 class="form__input"
                 name="nombre"
                 id="nombre"
+                required
                 placeholder="Bus, Buseta, Camioneta .."
               />
             </div>
             <div class="row">
               <label for="asientos" class="form__label"
                 >N&uacute;mero asientos:</label
-              ><input type="number" class="form__input" name="asientos" />
+              ><input
+                type="number"
+                class="form__input"
+                name="asientos"
+                id="asientos"
+              />
             </div>
             <div class="row col-2 row--flex">
               <input type="submit" value="Guardar" class="btn btn--send" />
@@ -61,5 +67,24 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a
+              href="../php/list-tipo-transporte.php"
+              class="btn"
+              target="_blank"
+              >Ver Tipo Transporte</a
+            >
+            <button class="btn">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/tipo-transporte.js" type="module"></script>
   </body>
 </html>
