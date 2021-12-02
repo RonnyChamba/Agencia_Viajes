@@ -29,7 +29,7 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action=""
           method="post"
           name="form-insert-clientes"
           class="form form-clientes"
@@ -42,6 +42,8 @@
                 class="form__input"
                 name="cedula"
                 id="cedula"
+                required
+                placeholder=" Campo Obligatorio"
               />
             </div>
             <div class="row">
@@ -51,30 +53,39 @@
                 class="form__input"
                 name="nombres"
                 id="nombres"
+                required
+                placeholder=" Campo Obligatorio"
               />
             </div>
             <div class="row">
               <label for="apellidos" class="form__label">Apellidos:</label
-              ><input type="text" class="form__input" name="apellidos" />
+              ><input
+                type="text"
+                class="form__input"
+                name="apellidos"
+                id="apellidos"
+                required
+                placeholder=" Campo Obligatorio"
+              />
             </div>
             <div class="row">
               <label for="direccion" class="form__label"
                 >Direcci&oacute;n:</label
-              ><input type="text" class="form__input" dir="direccion" />
+              ><input
+                type="text"
+                class="form__input"
+                id="direccion"
+                name="direccion"
+              />
             </div>
             <div class="row">
               <label for="edad" class="form__label">Edad:</label
-              ><input type="number" class="form__input" name="edad" />
+              ><input type="number" class="form__input" name="edad" id="edad" />
             </div>
 
             <div class="row">
               <label for="agnio" class="form__label">Año nacimiento</label
-              ><input
-                type="text"
-                class="form__input"
-                id="agnio"
-                placeholder="Cuatro números"
-              />
+              ><input type="text" class="form__input" id="agnio" />
             </div>
             <div class="row">
               <label for="estado" class="form__label">Estado civil:</label>
@@ -115,5 +126,11 @@
         </p>
       </section>
     </div>
+    <section class="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Titulo</h2>
+      </div>
+    </section>
+    <script src="../js/clientes.js" type="module"></script>
   </body>
 </html>
