@@ -7,19 +7,17 @@ $form.addEventListener("submit", function (event) {
 async function preInsert(event, form) {
   event.preventDefault();
   let cedula = form.elements["cedula"].value;
-  const parametro = {
-    cedula,
-  };
-  console.log(parametro);
-  let queryString = createQueryString(parametro);
-  console.log(queryString);
+  let queryString = createQueryString({ cedula });
   const { xhr, estado } = await ajax(
     `../php/consulta-existe.php?${queryString}`
   );
   let data = JSON.parse(xhr.responseText);
   if (estado) {
     if (data === null) guardar(form);
-    else alert("Cliente ya existe");
+    else
+      alertMensaje(
+        `Cliente con la cédula  ${cedula} ya se encuentra registrado`
+      );
   }
 }
 
@@ -47,7 +45,6 @@ function obtenerValores(form) {
     estudios,
   };
 
-  console.log(datos);
   return datos;
 }
 
@@ -56,13 +53,9 @@ async function guardar(form) {
   const retr = await ajax(
     `../php/php-sql-insert/sql-insert-clientes.php?${queryString}`
   );
-
-  console.log("retrt", retr);
   const data = JSON.parse(retr.xhr.responseText);
-  console.log("data", data);
-  // let persona = JSON.parse(data.persona);
-  // console.log(persona);
-  // createTable(JSON.parse(data.persona));
+  let persona = data.persona;
+  createTable(JSON.parse(persona));
 }
 
 function createTable(cliente) {
@@ -136,4 +129,10 @@ function reiniciar() {
   // $form.elements["estado"];
   $form.elements["telefono"].value = "";
   $form.elements["estudios"].value = "";
+}
+
+function alertMensaje(sms = "Mensaje del sistema") {
+  $modal.querySelector(".modal-table").innerHTML = "";
+  $modal.querySelector(".modal-parrafo").textContent = sms;
+  $modal.classList.add("modal--show");
 }
