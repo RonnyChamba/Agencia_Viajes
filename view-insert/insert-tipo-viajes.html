@@ -29,7 +29,7 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action="../php/php-sql-insert/sql-insert-tipo-viaje.php"
           method="post"
           name="form-insert-tipo-viaje"
           class="form form-tipo-viaje"
@@ -42,17 +42,30 @@
                 class="form__input"
                 name="nombre"
                 id="nombre"
+                required
                 placeholder="Individual, Pareja, Familiar .."
               />
             </div>
             <div class="row">
               <label for="precio" class="form__label">Precio:</label
-              ><input type="number" class="form__input" name="precio" />
+              ><input
+                type="number"
+                class="form__input"
+                name="precio"
+                id="precio"
+                required
+                placeholder="Campo obligatorio"
+              />
             </div>
             <div class="row col-2">
               <label for="descripcion" class="form__label"
                 >Descripci&oacute;n:</label
-              ><input type="text" class="form__input" name="descripcion" />
+              ><input
+                type="text"
+                class="form__input"
+                name="descripcion"
+                id="descripcion"
+              />
             </div>
             <div class="row col-2 row--flex">
               <input type="submit" value="Guardar" class="btn btn--send" />
@@ -65,5 +78,21 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a href="../php/list-tipo-viaje.php" class="btn" target="_blank"
+              >Ver Tipos Viajes</a
+            >
+            <button class="btn">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/tipo-viaje.js" type="module"></script>
   </body>
 </html>
