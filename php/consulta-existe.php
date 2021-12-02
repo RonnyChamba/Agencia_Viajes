@@ -3,11 +3,14 @@
   try{
 
     $sql ="";
-    if (isset($_GET['dni'])) {
-      $cedula = $_GET['dni'];
-      $sql ="SELECT * FROM CLIENTES WHERE CED_CLI LIKE '{$cedula}'";
-    }else{
-      $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '{$_REQUEST['cedula']}'"; 
+    $tabla =$_GET['tabla'];
+    $filtro =$_GET['filtro'];
+
+    if ($tabla=="empleados") {
+      $sql ="SELECT * FROM EMPLEADOS WHERE EMPLEADOS_CED LIKE '$filtro'";
+    }else if ($tabla=="clientes"){
+      $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '$filtro'"; 
+      // LIKE '{$_REQUEST['cedula']}'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);

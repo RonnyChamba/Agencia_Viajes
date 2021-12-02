@@ -29,10 +29,10 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action="../php/php-sql-insert/sql-insert-empleados.php"
           method="post"
-          name="form-insert-clientes"
-          class="form form-clientes"
+          name="form-insert-empleados"
+          class="form form-empleados"
         >
           <div class="form-content form-content--grid">
             <div class="row">
@@ -42,6 +42,8 @@
                 class="form__input"
                 name="cedula"
                 id="cedula"
+                required
+                placeholder=" Campo Obligatorio"
               />
             </div>
             <div class="row">
@@ -51,30 +53,34 @@
                 class="form__input"
                 name="nombres"
                 id="nombres"
+                required
+                placeholder=" Campo Obligatorio"
               />
             </div>
             <div class="row">
               <label for="apellidos" class="form__label">Apellidos:</label
-              ><input type="text" class="form__input" name="apellidos" />
+              ><input
+                type="text"
+                class="form__input"
+                name="apellidos"
+                id="apellidos"
+                required
+                placeholder=" Campo Obligatorio"
+              />
             </div>
             <div class="row">
               <label for="direccion" class="form__label"
                 >Direcci&oacute;n:</label
-              ><input type="text" class="form__input" dir="direccion" />
-            </div>
-            <div class="row">
-              <label for="edad" class="form__label">Edad:</label
-              ><input type="number" class="form__input" name="edad" />
-            </div>
-
-            <div class="row">
-              <label for="agnio" class="form__label">Año nacimiento</label
               ><input
                 type="text"
                 class="form__input"
-                id="agnio"
-                placeholder="Cuatro números"
+                name="direccion"
+                id="direccion"
               />
+            </div>
+            <div class="row">
+              <label for="edad" class="form__label">Edad:</label
+              ><input type="number" class="form__input" name="edad" id="edad" />
             </div>
             <div class="row">
               <label for="estado" class="form__label">Estado civil:</label>
@@ -94,7 +100,7 @@
                 id="telefono"
               />
             </div>
-            <div class="row col-2">
+            <div class="row">
               <label for="sueldo" class="form__label">Sueldo:</label
               ><input
                 type="number"
@@ -114,5 +120,21 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a href="../php/list-empleados.php" class="btn" target="_blank"
+              >Ver Empleados</a
+            >
+            <button class="btn">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/empleados.js" type="module"></script>
   </body>
 </html>
