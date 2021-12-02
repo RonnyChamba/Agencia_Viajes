@@ -7,7 +7,7 @@ $form.addEventListener("submit", function (event) {
 async function preInsert(event, form) {
   event.preventDefault();
   let cedula = form.elements["cedula"].value;
-  let queryString = createQueryString({ cedula });
+  let queryString = createQueryString({ filtro: cedula, tabla: "clientes" });
   const { xhr, estado } = await ajax(
     `../php/consulta-existe.php?${queryString}`
   );
