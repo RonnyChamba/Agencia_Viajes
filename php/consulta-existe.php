@@ -7,7 +7,7 @@
       $cedula = $_GET['dni'];
       $sql ="SELECT * FROM CLIENTES WHERE CED_CLI LIKE '{$cedula}'";
     }else{
-      $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '{$_GET['cedula']}'"; 
+      $sql ="SELECT * FROM CLIENTES WHERE CLIENTES_CED LIKE '{$_REQUEST['cedula']}'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);

@@ -38,3 +38,54 @@
 .form .row {
   justify-content: space-around;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(0 0 0 /0.8);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -100;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.modal-content {
+  padding: 20px;
+  min-width: 500px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+.modal-title {
+  color: royalblue;
+  font-size: 2em;
+}
+
+.modal-botones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.modal-botones .btn {
+  width: 200px;
+}
+
+.modal-parrafo {
+  font-size: 1.2em;
+  color: darkred;
+  text-align: left;
+  font-weight: 400;
+}
+.modal--show {
+  z-index: 300;
+  opacity: 1;
+}
+
+.table tbody tr {
+  background-color: #f2f2f2;
+}
