@@ -8,8 +8,10 @@
   width: 250px;
 }
 .form .form-select {
-  width: 100%;
+  width: 100px;
   background-color: limegreen;
+  font-size: 1em;
+  margin-left: 10px;
 }
 .form__label {
   font-weight: 500;
@@ -25,6 +27,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  align-items: flex-end;
 }
 
 .form-content--grid .col-2 {
@@ -84,6 +87,12 @@
 .modal--show {
   z-index: 300;
   opacity: 1;
+}
+.modal .table .btn {
+  width: 100px;
+  background-color: limegreen;
+  font-size: 1em;
+  margin-left: 10px;
 }
 
 .table tbody tr {

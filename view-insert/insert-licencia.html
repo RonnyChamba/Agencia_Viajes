@@ -29,7 +29,7 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action="../php/php-sql-insert/sql-insert-licencias.php"
           method="post"
           name="form-insert-licencia"
           class="form form-licencia"
@@ -43,37 +43,62 @@
                 name="nombre"
                 id="nombre"
                 placeholder="A, B, C, D .."
+                required
               />
             </div>
 
             <div class="row">
-              <label for="">Seleccionar un conductor</label>
-              <button class="btn form-select" id="select-conductor">
-                Seleccionar
-              </button>
+              <!-- <label for="">Seleccionar un conductor</label> -->
+              <div class="row--flex">
+                <input type="hidden" name="cedula-conductor" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="nombre-conductor"
+                  readonly
+                  required
+                  placeholder="Seleccione un conductor"
+                />
+                <!-- <input
+                  type="submit"
+                  class="btn form-select"
+                  id="select-conductor"
+                  value="Agregar"
+                /> -->
+                <a href="#" class="btn form-select" id="add-conductor"
+                  >Agregar</a
+                >
+              </div>
             </div>
             <div class="row">
-              <label for="fecha-expedicion" class="form__label"
+              <label for="fechaExpedicion" class="form__label"
                 >Fecha Expedici&oacute;n:</label
               ><input
                 type="date"
                 class="form__input"
-                name="fecha-expedicion"
-                id="fecha-expedicion"
+                name="fechaExpedicion"
+                id="fechaExpedicion"
+                required
               />
             </div>
             <div class="row">
-              <label for="fecha-expiracion" class="form__label"
+              <label for="fechaExpiracion" class="form__label"
                 >Fecha Expiraci&oacute;n</label
               ><input
                 type="date"
                 class="form__input"
-                name="fecha-expiracion"
-                id="fecha-expiracion"
+                name="fechaExpiracion"
+                id="fechaExpiracion"
+                required
               />
             </div>
             <div class="row col-2 row--flex">
-              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input
+                type="submit"
+                value="Guardar"
+                class="btn btn--send"
+                id="btn-guardar"
+              />
               <input type="reset" value="Limpiar" class="btn btn--reset" />
             </div>
           </div>
@@ -83,5 +108,21 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a href="../php/list-licencias.php" class="btn" target="_blank"
+              >Ver Licencias</a
+            >
+            <button class="btn" id="close-modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/licencias.js" type="module"></script>
   </body>
 </html>

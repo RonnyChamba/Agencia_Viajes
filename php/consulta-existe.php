@@ -16,6 +16,14 @@
       $sql ="SELECT * FROM CONDUCTOR WHERE CONDUCTOR_CED LIKE '$filtro'"; 
     }else if ($tabla=="tipo-viaje"){
       $sql ="SELECT * FROM TIPO_VIAJE WHERE TIPO_VIAJE_TIP LIKE '$filtro'"; 
+    }else if ($tabla=="licencia"){
+      // Cuando se invoque para esta if, se pasa el paremtro licencia
+      $tipoLicencia = $_GET['licencia'];
+      $sql ="SELECT CONDUCTOR_NOM, CONDUCTOR_APE,
+                    LICENCIA_TIP, LICENCIA_FE_I, LICENCIA_FE_F 
+            FROM CONDUCTOR 
+            INNER JOIN LICENCIA ON LICENCIA_FK_CON= CONDUCTOR_CED 
+            WHERE CONDUCTOR_CED  LIKE '$filtro' AND LICENCIA_TIP  LIKE '$tipoLicencia'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);
