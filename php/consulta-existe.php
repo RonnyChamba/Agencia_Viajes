@@ -26,6 +26,15 @@
             WHERE CONDUCTOR_CED  LIKE '$filtro' AND LICENCIA_TIP  LIKE '$tipoLicencia'"; 
     }else if ($tabla=="transporte"){
       $sql ="SELECT * FROM TRANSPORTE WHERE TRANSPORTE_MAT LIKE '$filtro'"; 
+    }else if ($tabla=="destino"){
+      $ciudad =$_GET['ciudad'];
+      $tipoViaje =$_GET['tipoViaje'];
+      $sql ="SELECT DESTINO_LUG,DESTINO_CIU, TIPO_VIAJE_TIP 
+                    AS 'DESTINO_FK_TI_V' 
+             FROM DESTINO 
+             INNER JOIN TIPO_VIAJE ON TIPO_VIAJE_COD= DESTINO_FK_TI_V 
+             WHERE (DESTINO_LUG LIKE '$filtro'  AND  DESTINO_CIU 
+             LIKE '$ciudad') AND TIPO_VIAJE_COD LIKE '$tipoViaje'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);

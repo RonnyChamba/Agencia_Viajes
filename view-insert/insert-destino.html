@@ -42,7 +42,8 @@
                 class="form__input"
                 name="lugar"
                 id="lugar"
-                placeholder=""
+                required
+                placeholder="Campo obligatorio"
               />
             </div>
             <div class="row">
@@ -52,7 +53,8 @@
                 class="form__input"
                 name="direccion"
                 id="direccion"
-                placeholder=""
+                required
+                placeholder="Campo obligatorio"
               />
             </div>
             <div class="row">
@@ -62,19 +64,37 @@
                 class="form__input"
                 name="ciudad"
                 id="ciudad"
+                required
+                placeholder="Campo obligatorio"
               />
             </div>
             <div class="row">
               <label for="pais" class="form__label">Pais:</label
-              ><input type="text" class="form__input" name="pais" id="pais" />
+              ><input
+                type="text"
+                class="form__input"
+                name="pais"
+                id="pais"
+                required
+                placeholder="Campo obligatorio"
+              />
             </div>
             <div class="row">
-              <label for="">Seleccionar un tipo viaje</label>
-              <button class="btn form-select" id="select-tipo-viaje">
-                Seleccionar
-              </button>
+              <div class="row--flex">
+                <input type="hidden" name="codigo-tipo-viaje" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="tipo-viaje"
+                  readonly
+                  required
+                  placeholder="Seleccione un tipo viaje"
+                />
+                <a href="#" class="btn form-select" id="add-tipo-viaje"
+                  >Agregar</a
+                >
+              </div>
             </div>
-
             <div class="row col-2 row--flex">
               <input type="submit" value="Guardar" class="btn btn--send" />
               <input type="reset" value="Limpiar" class="btn btn--reset" />
@@ -86,5 +106,25 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a
+              href="../php/list-destino.php"
+              class="btn"
+              target="_blank"
+              id="modal-link"
+              >Ver Destinos
+            </a>
+            <button class="btn" id="close-modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/destino.js" type="module"></script>
   </body>
 </html>
