@@ -19,7 +19,7 @@ VALUES
 $resultado = mysqli_query($conexion, $sql);
 
 $data = [
-  "estado AQIU" => $resultado
+  "estado" => $resultado
 ];
 if ($resultado){
     $sql = "SELECT LICENCIA_COD, LICENCIA_TIP, LICENCIA_FE_I, LICENCIA_FE_F,
