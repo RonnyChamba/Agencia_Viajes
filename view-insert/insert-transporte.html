@@ -29,7 +29,7 @@
       </section>
       <section class="content content--main">
         <form
-          action="#"
+          action="../php/php-sql-insert/sql-insert-transporte.php"
           method="post"
           name="form-insert-transporte"
           class="form form-transporte"
@@ -42,7 +42,8 @@
                 class="form__input"
                 name="matricula"
                 id="matricula"
-                placeholder=""
+                placeholder="Campo obligatorio"
+                required
               />
             </div>
             <div class="row">
@@ -60,17 +61,39 @@
               <label for="color" class="form__label">Color:</label
               ><input type="text" class="form__input" name="color" id="color" />
             </div>
+
             <div class="row">
-              <label for="">Seleccionar un tipo transporte</label>
-              <button class="btn form-select" id="select-conductor">
-                Seleccionar
-              </button>
+              <div class="row--flex">
+                <input type="hidden" name="cedula-conductor" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="nombre-conductor"
+                  readonly
+                  required
+                  placeholder="Seleccione un conductor"
+                />
+                <a href="#" class="btn form-select" id="add-conductor"
+                  >Agregar</a
+                >
+              </div>
             </div>
+
             <div class="row">
-              <label for="">Seleccionar un conductor</label>
-              <button class="btn form-select" id="select-conductor">
-                Seleccionar
-              </button>
+              <div class="row--flex">
+                <input type="hidden" name="codigo-tipo-transporte" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="tipo-transporte"
+                  readonly
+                  required
+                  placeholder="Seleccione un tipo transporte"
+                />
+                <a href="#" class="btn form-select" id="add-tipo-transporte"
+                  >Agregar</a
+                >
+              </div>
             </div>
 
             <div class="row col-2 row--flex">
@@ -84,5 +107,25 @@
         </p>
       </section>
     </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a
+              href="../php/list-transporte.php"
+              class="btn"
+              target="_blank"
+              id="modal-link"
+              >Ver Transportes
+            </a>
+            <button class="btn" id="close-modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/transportes.js" type="module"></script>
   </body>
 </html>

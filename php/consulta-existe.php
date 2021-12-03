@@ -24,6 +24,8 @@
             FROM CONDUCTOR 
             INNER JOIN LICENCIA ON LICENCIA_FK_CON= CONDUCTOR_CED 
             WHERE CONDUCTOR_CED  LIKE '$filtro' AND LICENCIA_TIP  LIKE '$tipoLicencia'"; 
+    }else if ($tabla=="transporte"){
+      $sql ="SELECT * FROM TRANSPORTE WHERE TRANSPORTE_MAT LIKE '$filtro'"; 
     }
 
     $stm = mysqli_query($conexion,$sql);
