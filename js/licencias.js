@@ -38,14 +38,19 @@ async function isExist(form) {
   console.log(data);
   if (estado) {
     if (data === null) guardar(form);
-    else
+    else {
+      bandera = true;
+      setLinkInsertarText();
       alertMensaje(
         `${data.CONDUCTOR_NOM} ${data.CONDUCTOR_APE} ya registra licencia tipo ${data.LICENCIA_TIP}, ingrese un diferente.`
       );
+    }
   }
 }
 
 async function guardar(form) {
+  // Cambia el link y textContent
+  setLinkInsertarText();
   let queryString = createQueryString(obtenerValores(form));
   const retr = await ajax(
     `../php/php-sql-insert/sql-insert-licencias.php?${queryString}`
@@ -72,6 +77,8 @@ function obtenerValores(form) {
 }
 
 async function listarConductores() {
+  // Cambia el link y textContent
+  setLinkInsertarText();
   let queryString = createQueryString({
     tabla: "CONDUCTOR",
   });
@@ -208,4 +215,18 @@ function setDatosConductor(boton) {
   $form.elements[
     "nombre-conductor"
   ].value = `${rowCeldas[1].textContent} ${rowCeldas[2].textContent}`;
+}
+function setLinkInsertarText() {
+  let fileForm = "";
+  let textContent = "";
+  if (bandera) {
+    fileForm = "../php/list-licencias.php";
+    textContent = "Ver Licencias";
+  } else if (!bandera) {
+    fileForm = "../view-insert/insert-conductor.html";
+    textContent = "Nuevo Conductor";
+  }
+
+  $modal.querySelector("#modal-link").setAttribute("href", fileForm);
+  $modal.querySelector("#modal-link").textContent = textContent;
 }
