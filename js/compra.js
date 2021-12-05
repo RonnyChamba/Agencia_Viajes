@@ -6,6 +6,7 @@ const $modal = document.getElementById("modal");
 let bandera = true;
 $form.addEventListener("submit", function (event) {
   event.preventDefault();
+  bandera = "compra";
   guardar(this);
 });
 
@@ -40,8 +41,6 @@ $form.elements["boletos"].addEventListener("change", () => calcularPrecio());
 $form.elements["boletos"].addEventListener("keyup", () => calcularPrecio());
 
 async function guardar(form) {
-  // Cambia el link y textContent
-  bandera = "compra";
   setLinkInsertarText();
   let queryString = createQueryString(obtenerValores(form));
   const retr = await ajax(
@@ -51,11 +50,7 @@ async function guardar(form) {
   if (retr.estado && data.estado) {
     let codigoCompra = JSON.parse(data.objeto).COMPRA_COD;
     guardarFactura(codigoCompra, form);
-
-    // createTable(JSON.parse(objeto));
-  } else {
-    console.log("Ocurrio un error");
-  }
+  } else alert("Ocurrio un error al registrar la compra");
 }
 
 function obtenerValores(form) {
@@ -307,13 +302,16 @@ function getTitleTableDestino() {
 
 function getTitleTableCompra() {
   const title = {
-    COMPRA_COD: "CODIGO",
-    COMPRA_FEC: "FECHA",
-    COMPRA_NU_B: "BOLETOS",
-    COMPRA_FK_CLI: "CLIENTE",
-    COMPRA_FK_DES: "DESTINO",
-    COMPRA_FK_TRA: "TRANSPORTE",
-    COMPRA_FK_EMP: "EMPLEADO",
+    FACTURA_COD: "CODIGO",
+    FACTURA_EMPLEADO: "EMPLEADO",
+    FACTURA_CLIENTE: "CLIENTE",
+    FACTURA_LUG: "DESTINO",
+    FACTURA_FEC: "FECHA",
+    FACTURA_BOL: "BOLETOS",
+    FACTURA_PRE: "PRECIO",
+    FACTURA_SUB: "SUBTOTAL",
+    FACTURA_IVA: "IVA 12%",
+    FACTURA_TOT: "TOTAL",
   };
   return title;
 }
@@ -375,7 +373,7 @@ $modal.addEventListener("click", function (event) {
 
 function reiniciar() {
   if (bandera === "compra") {
-    $form.elements["boleto"].value = "1";
+    $form.elements["boletos"].value = "1";
     $form.elements["cedula-cliente"].value = "";
     $form.elements["nombre-cliente"].value = "";
 
@@ -484,8 +482,13 @@ function setLinkInsertarText() {
 }
 
 async function guardarFactura(codCompra, form) {
-  let queryString = createQueryString(obtenerValoresFactura(form, codCompra));
+  let queryString = createQueryString(obtenerValoresFactura(codCompra, form));
+  // console.log(queryString);
   const retr = await ajax(
     `../php/php-sql-insert/sql-insert-factura.php?${queryString}`
   );
+
+  let data = JSON.parse(retr.xhr.responseText);
+  if (data.estado) createTable(JSON.parse(data.objeto));
+  else alert("No se registro datos de la factura");
 }
