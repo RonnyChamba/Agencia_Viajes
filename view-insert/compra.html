@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nueva Venta</title>
+    <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style2.css" />
+  </head>
+  <body>
+    <div class="container container--flex">
+      <section class="content content--header">
+        <header class="header header--flex">
+          <h1 class="title">Registrar Venta Boletos</h1>
+          <p class="icon-github">
+            <a
+              href="https://github.com/RonnyChamba/Agencia_Viajes"
+              target="_blank"
+              class="link"
+              >Descargar Proyecto</a
+            >
+          </p>
+        </header>
+      </section>
+      <section class="content content--main">
+        <form
+          action="../php/php-sql-insert/sql-insert-compra.php"
+          method="post"
+          name="form-insert-compra"
+          class="form form-compra"
+        >
+          <div class="form-content form-content--grid">
+            <!-- <div class="row">
+              <label for="fecha" class="form__label">Fecha:</label
+              ><input
+                type="date"
+                class="form__input"
+                name="fecha"
+                id="fecha"
+                required
+                placeholder=" Campo Obligatorio"
+              />
+            </div> -->
+            <div class="row">
+              <label for="boletos" class="form__label"
+                >N&uacute;mero boletos:</label
+              ><input
+                type="number"
+                class="form__input"
+                name="boletos"
+                id="boletos"
+                required
+                value="1"
+                placeholder=" Campo Obligatorio"
+              />
+            </div>
+            <div class="row">
+              <div class="row--flex">
+                <input type="hidden" name="cedula-cliente" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="nombre-cliente"
+                  readonly
+                  required
+                  placeholder="Seleccione un cliente"
+                />
+                <a href="#" class="btn form-select" id="add-cliente">Agregar</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row--flex">
+                <input type="hidden" name="codigo-destino" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="tipo-destino"
+                  readonly
+                  required
+                  placeholder="Seleccione un destino"
+                />
+
+                <a href="#" class="btn form-select" id="add-destino">Agregar</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row--flex">
+                <input type="hidden" name="codigo-transporte" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="tipo-transporte"
+                  readonly
+                  required
+                  placeholder="Seleccione un transporte"
+                />
+
+                <a href="#" class="btn form-select" id="add-transporte"
+                  >Agregar</a
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="row--flex">
+                <input type="hidden" name="cedula-empleado" />
+                <input
+                  type="text"
+                  class="form__input"
+                  name="nombre-empleado"
+                  readonly
+                  required
+                  placeholder="Seleccione un empleado"
+                />
+
+                <a href="#" class="btn form-select" id="add-empleado"
+                  >Agregar</a
+                >
+              </div>
+            </div>
+            <div class="row">
+              <label for="fecha" class="form__label">Observaci&oacute;n:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="observacion"
+                id="observacion"
+                value="Ninguna"
+              />
+            </div>
+            <div class="row"></div>
+            <div class="row row--flex">
+              <label for="precio" class="form__label form__label-100"
+                >Precio:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="precio"
+                id="precio"
+                value="0.00"
+                readonly
+              />
+            </div>
+            <div class="row"></div>
+            <div class="row row--flex">
+              <label for="subtotal" class="form__label form__label-100"
+                >Subtotal:</label
+              ><input
+                type="text"
+                class="form__input"
+                name="subtotal"
+                id="subtotal"
+                value="0.00"
+                readonly
+              />
+            </div>
+            <div class="row"></div>
+            <div class="row row--flex">
+              <label for="iva" class="form__label form__label-100"
+                >Iva(12%):</label
+              ><input
+                type="text"
+                class="form__input"
+                name="iva"
+                id="iva"
+                value="0.00"
+                readonly
+              />
+            </div>
+            <div class="row"></div>
+            <div class="row row--flex">
+              <label
+                for="iva"
+                class="form__label form__label-100 form__label--pagar"
+                >Pagar:</label
+              ><input
+                type="text"
+                class="form__input form__input--pagar"
+                name="iva"
+                id="iva"
+                value="0.00"
+                readonly
+              />
+            </div>
+
+            <div class="row col-2 row--flex">
+              <input type="submit" value="Guardar" class="btn btn--send" />
+              <input type="reset" value="Limpiar" class="btn btn--reset" />
+            </div>
+          </div>
+        </form>
+        <p>
+          <a href="/index.html" class="link link--return">Regresar al menú</a>
+        </p>
+      </section>
+    </div>
+    <section class="modal" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <p class="modal-parrafo">dsdsddsdsd</p>
+          <div class="modal-table" id="modal-table"></div>
+          <div class="modal-botones">
+            <a href="../php/list-clientes.php" class="btn" target="_blank"
+              >Ver Clientes</a
+            >
+            <button class="btn">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/clientes.js" type="module"></script>
+  </body>
+</html>

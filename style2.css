@@ -17,6 +17,21 @@
   font-weight: 500;
   font-size: 1.1em;
 }
+/* Form compra */
+.form__label-100 {
+  width: 100px;
+  margin-right: 10px;
+}
+.form__label--pagar,
+.form__input--pagar {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.form__input--pagar {
+  color: darkred;
+  border-color: inherit;
+}
+
 .form-content {
   padding: 20px;
   border-radius: 20px;
