@@ -191,6 +191,7 @@ function getTitleTableDestinos() {
     DESTINO_CIU: "CIUDAD",
     DESTINO_PAI: "PAIS",
     DESTINO_FK_TI_V: "TIPO",
+    TIPO_VIAJE_PRE: "PRECIO",
   };
   return titles;
 }
