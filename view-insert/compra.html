@@ -174,14 +174,14 @@
             <div class="row"></div>
             <div class="row row--flex">
               <label
-                for="iva"
+                for="total"
                 class="form__label form__label-100 form__label--pagar"
                 >Pagar:</label
               ><input
                 type="text"
                 class="form__input form__input--pagar"
-                name="iva"
-                id="iva"
+                name="total"
+                id="total"
                 value="0.00"
                 readonly
               />
@@ -205,14 +205,18 @@
           <p class="modal-parrafo">dsdsddsdsd</p>
           <div class="modal-table" id="modal-table"></div>
           <div class="modal-botones">
-            <a href="../php/list-clientes.php" class="btn" target="_blank"
-              >Ver Clientes</a
+            <a
+              href="../php/list-compra.php"
+              class="btn"
+              target="_blank"
+              id="modal-link"
+              >Ver Compras</a
             >
             <button class="btn">Aceptar</button>
           </div>
         </div>
       </div>
     </section>
-    <script src="../js/clientes.js" type="module"></script>
+    <script src="../js/compra.js" type="module"></script>
   </body>
 </html>
