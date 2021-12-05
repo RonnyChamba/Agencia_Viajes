@@ -7,7 +7,6 @@ let bandera = true;
 $form.addEventListener("submit", function (event) {
   event.preventDefault();
   guardar(this);
-  // preInsert(event, this);
 });
 
 $form.querySelector("#add-cliente").addEventListener("click", function (event) {
@@ -36,11 +35,9 @@ $form
     listarEmpleados();
   });
 
-function preInsert(event, form) {
-  event.preventDefault();
-  bandera = "transporte";
-  isExist(form);
-}
+$form.elements["boletos"].addEventListener("change", () => calcularPrecio());
+
+$form.elements["boletos"].addEventListener("keyup", () => calcularPrecio());
 
 async function guardar(form) {
   // Cambia el link y textContent
@@ -48,30 +45,46 @@ async function guardar(form) {
   setLinkInsertarText();
   let queryString = createQueryString(obtenerValores(form));
   const retr = await ajax(
-    `../php/php-sql-insert/sql-insert-transporte.php?${queryString}`
+    `../php/php-sql-insert/sql-insert-compra.php?${queryString}`
   );
-  // console.log(retr);
   const data = JSON.parse(retr.xhr.responseText);
-  let objeto = data.objeto;
-  createTable(JSON.parse(objeto));
+  if (retr.estado && data.estado) {
+    let codigoCompra = JSON.parse(data.objeto).COMPRA_COD;
+
+    // createTable(JSON.parse(objeto));
+  } else {
+    console.log("Ocurrio un error");
+  }
 }
 
 function obtenerValores(form) {
-  let matricula = form.elements["matricula"].value;
-  let agnioFabricacion = form.elements["agnio-fabricacion"].value;
-  let color = form.elements["color"].value;
-
-  // El input donde se obtiene este valor es type hidden
-  let conductor = form.elements["cedula-conductor"].value;
-  // El input donde se obtiene este valor es type hidden
-  let tipoTransporte = form.elements["codigo-tipo-transporte"].value;
+  let boletos = form.elements["boletos"].value;
+  // El input donde se obtiene estos valores son  type hidden
+  let cliente = form.elements["cedula-cliente"].value;
+  let destino = form.elements["codigo-destino"].value;
+  let transporte = form.elements["codigo-transporte"].value;
+  let empleado = form.elements["cedula-empleado"].value;
 
   const datos = {
-    matricula,
-    agnioFabricacion,
-    color,
-    conductor,
-    tipoTransporte,
+    boletos,
+    cliente,
+    destino,
+    transporte,
+    empleado,
+  };
+  // console.log("datos obtenidos", datos);
+  return datos;
+}
+function obtenerValoresFactura(form, codigoCompra) {
+  let observacion = form.elements["observacion"].value;
+  let subtotal = form.elements["subtotal"];
+  let total = form.elements["total"];
+
+  const datos = {
+    observacion,
+    codigoCompra,
+    subtotal,
+    total,
   };
   return datos;
 }
@@ -257,7 +270,7 @@ function getBodyTableEmpledos(objeto) {
     }
 
     let celdLink = createCelda("td", "");
-    celdLink.innerHTML = `<button class ='btn' id='btn-select-empleado' data-codigo = ${item.EMPLEADO_CED} >Seleccionar</button>`;
+    celdLink.innerHTML = `<button class ='btn' id='btn-select-empleado' data-codigo = ${item.EMPLEADOS_CED} >Seleccionar</button>`;
     row.appendChild(celdLink);
     fragment.appendChild(row);
   });
@@ -347,7 +360,7 @@ function getTitleTableEmpleado() {
 
 $modal.addEventListener("click", function (event) {
   if (event.target.matches("#modal button")) {
-    // Llenar datos del conductor antes de insertar una licencia
+    // console.log(event);
     if (event.target.id === "btn-select-cliente") setDatosCliente(event.target);
     if (event.target.id === "btn-select-transporte")
       setDatosTransporte(event.target);
@@ -390,7 +403,7 @@ function alertMensaje(sms = "Mensaje del sistema") {
 }
 
 function setDatosCliente(boton) {
-  let cedula = boton.dataset["cedula"];
+  let cedula = boton.dataset["codigo"];
   $form.elements["cedula-cliente"].value = cedula;
 
   let rowBoton = boton.parentElement.parentElement;
@@ -406,7 +419,9 @@ function setDatosTransporte(boton) {
 
   let rowBoton = boton.parentElement.parentElement;
   let rowCeldas = [...rowBoton.cells];
-  $form.elements["tipo-transporte"].value = `${rowCeldas[1].textContent}`;
+  $form.elements[
+    "tipo-transporte"
+  ].value = `${rowCeldas[4].textContent} - ${rowCeldas[2].textContent}`;
 }
 function setDatosDestino(boton) {
   let cedula = boton.dataset["codigo"];
@@ -415,6 +430,11 @@ function setDatosDestino(boton) {
   let rowBoton = boton.parentElement.parentElement;
   let rowCeldas = [...rowBoton.cells];
   $form.elements["tipo-destino"].value = `${rowCeldas[1].textContent}`;
+
+  // Ubicar el precio del destino seleccionado en el input
+  let precio = boton.parentElement.parentElement.cells[6].textContent;
+  $form.elements["precio"].value = precio;
+  calcularPrecio();
 }
 function setDatosEmpleado(boton) {
   let cedula = boton.dataset["codigo"];
@@ -422,9 +442,22 @@ function setDatosEmpleado(boton) {
 
   let rowBoton = boton.parentElement.parentElement;
   let rowCeldas = [...rowBoton.cells];
-  $form.elements["nombre-empleado"].value = `${rowCeldas[1].textContent}`;
+  $form.elements[
+    "nombre-empleado"
+  ].value = `${rowCeldas[1].textContent} ${rowCeldas[2].textContent} `;
 }
 
+function calcularPrecio() {
+  let precio = parseFloat($form.elements["precio"].value);
+  let boletos = $form.elements["boletos"].value;
+  let subtotal = precio * boletos;
+  let iva = (subtotal * 12) / 100;
+  let total = subtotal + iva;
+  $form.elements["precio"].value = precio;
+  $form.elements["subtotal"].value = subtotal;
+  $form.elements["iva"].value = iva;
+  $form.elements["total"].value = total;
+}
 function setLinkInsertarText() {
   let fileForm = "";
   let textContent = "";
