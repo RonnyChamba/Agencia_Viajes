@@ -50,6 +50,7 @@ async function guardar(form) {
   const data = JSON.parse(retr.xhr.responseText);
   if (retr.estado && data.estado) {
     let codigoCompra = JSON.parse(data.objeto).COMPRA_COD;
+    guardarFactura(codigoCompra, form);
 
     // createTable(JSON.parse(objeto));
   } else {
@@ -75,14 +76,14 @@ function obtenerValores(form) {
   // console.log("datos obtenidos", datos);
   return datos;
 }
-function obtenerValoresFactura(form, codigoCompra) {
+function obtenerValoresFactura(codCompra, form) {
   let observacion = form.elements["observacion"].value;
-  let subtotal = form.elements["subtotal"];
-  let total = form.elements["total"];
+  let subtotal = form.elements["subtotal"].value;
+  let total = form.elements["total"].value;
 
   const datos = {
     observacion,
-    codigoCompra,
+    codCompra,
     subtotal,
     total,
   };
@@ -480,4 +481,11 @@ function setLinkInsertarText() {
 
   $modal.querySelector("#modal-link").setAttribute("href", fileForm);
   $modal.querySelector("#modal-link").textContent = textContent;
+}
+
+async function guardarFactura(codCompra, form) {
+  let queryString = createQueryString(obtenerValoresFactura(form, codCompra));
+  const retr = await ajax(
+    `../php/php-sql-insert/sql-insert-factura.php?${queryString}`
+  );
 }
