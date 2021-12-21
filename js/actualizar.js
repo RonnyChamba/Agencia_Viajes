@@ -6,7 +6,6 @@ const $selectFiltro = $form["select-filtro"];
 const $modal = document.getElementById("modal");
 
 const $formModal = $d.forms["form-update"];
-console.log($formModal);
 
 $formModal.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -41,14 +40,16 @@ const tablas = {
   // COMPRA: "COMPRAS",
   //FACTURA: "FACTURAS",
 };
+
+/* Archivos  encargados  mostrar consulta  o actualizar */
 const files = {
-  EMPLEADOS: "list-empleados.php",
+  EMPLEADOS: "update-empleados.php",
   //TIPO_VIAJE: "list-tipo-viaje.php",
   //LICENCIA: "list-licencias.php",
   //DESTINO: "list-destino.php",
-  CLIENTES: "list-clientes.php",
+  CLIENTES: "update-clientes.php",
   //TIPO_TRANSPORTE: "list-tipo-transporte.php",
-  CONDUCTOR: "list-conductor.php",
+  CONDUCTOR: "update-conductor.php",
   //TRANSPORTE: "list-transporte.php",
   //COMPRA: "list-compra.php",
   //FACTURA: "list-facturas.php",
@@ -142,44 +143,31 @@ function createOptionFragment(objData) {
 }
 setTablas();
 
-function buscar(tabla, parametro = "") {
-  switch (tabla) {
-    case "EMPLEADOS":
-      buscarEmpleado(parametro);
-      break;
-    case "CLIENTES":
-      buscarCliente(parametro);
-      break;
-    case "CONDUCTOR":
-      buscarConductor(parametro);
-      break;
-
-    default:
-      alert("No existe la tabla ", tabla);
-      break;
-  }
-}
-
-async function buscarEmpleado(filtro) {
-  // filtro = "0000000066";
-  let queryString = createQueryString({ filtro, tabla: "empleados" });
+async function buscar(tabla, filtro) {
+  // Consultar
+  let queryString = createQueryString({ filtro, tabla: tabla.toLowerCase() });
   const { xhr, estado } = await ajax(
     `../php/consulta-existe.php?${queryString}`
   );
-  let data = JSON.parse(xhr.responseText);
-  if (data) {
-    queryString = createQueryString({ data: JSON.stringify(data) });
-    // Peticion haci archivos form update
-    const formulario = await ajax(
-      `../php/php-view-update/view-update-empleados.php?${queryString}`
-    );
 
-    let formUpdate = formulario.xhr.responseText;
-    $formModal.innerHTML = formUpdate;
-    $modal.querySelector("#modal-subtitle").textContent = "Actualizar Empleado";
-    $modal.classList.add("modal--show");
-  } else alert(`El empleado con la cédula ${filtro} no existe`);
+  // Mostrar formulario con los datos a actualizar
+  let data = JSON.parse(xhr.responseText);
+  if (data) cargarModalFormUpdate(data, tabla);
+  else alert(`El ${tabla} con la cédula ${filtro} no existe`);
 }
 
-function buscarCliente(filtro) {}
-function buscarConductor(filtro) {}
+async function cargarModalFormUpdate(data, tabla) {
+  let queryString = createQueryString({ data: JSON.stringify(data) });
+  // Peticion haci archivos form update
+  const formulario = await ajax(
+    `../php/php-view-update/view-${files[tabla]}?${queryString}`
+  );
+
+  // Retorna un contenedor con los datos para agregar al form del modal
+  let formUpdate = formulario.xhr.responseText;
+  $formModal.innerHTML = formUpdate;
+  $modal.querySelector(
+    "#modal-subtitle"
+  ).textContent = `Actualizar  ${tabla.toLowerCase()} `;
+  $modal.classList.add("modal--show");
+}
