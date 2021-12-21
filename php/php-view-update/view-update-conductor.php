@@ -15,6 +15,7 @@ $arreglo = json_decode($data, true);
                 name="cedula"
                 id="cedula"
                 required
+                readonly
                  value="<?php echo  $arreglo['CONDUCTOR_CED']?>"
               
               />
