@@ -7,12 +7,6 @@ $data = $_GET['data'];
 $arreglo = json_decode($data, true);
 
 ?>
-<form
-          action="../php/php-sql-update/sql-update-empleados.php"
-          method="post"
-          name="form-update-empleados"
-          class="form form-empleados"
-        >
           <div class="form-content form-content--grid">
             <div class="row">
               <label for="cedula" class="form__label">C&eacute;dula:</label
@@ -112,8 +106,8 @@ $arreglo = json_decode($data, true);
                 <input type="reset" value="Cancelar" class="btn btn--reset" />
               </div>
               <div>
-                <button  id="close-modal"  class="btn btn--close"  >Cerrar</button>
+                <input type="submit" value="Cerrar" class="btn btn--close" />
+               
               </div>
             </div>
           </div>
-        </form>

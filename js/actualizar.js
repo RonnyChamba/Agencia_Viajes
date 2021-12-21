@@ -5,6 +5,14 @@ const $selectTablas = $form["select-tabla"];
 const $selectFiltro = $form["select-filtro"];
 const $modal = document.getElementById("modal");
 
+const $formModal = $d.forms["form-update"];
+console.log($formModal);
+
+$formModal.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  console.log(event);
+});
 $selectTablas.addEventListener("click", () => selectedOption());
 $form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -167,7 +175,7 @@ async function buscarEmpleado(filtro) {
     );
 
     let formUpdate = formulario.xhr.responseText;
-    $modal.querySelector("#modal-form").outerHTML = formUpdate;
+    $formModal.innerHTML = formUpdate;
     $modal.querySelector("#modal-subtitle").textContent = "Actualizar Empleado";
     $modal.classList.add("modal--show");
   } else alert(`El empleado con la cédula ${filtro} no existe`);
