@@ -106,7 +106,9 @@ $arreglo = json_decode($data, true);
                 <input type="reset" value="Cancelar" class="btn btn--reset" />
               </div>
               <div>
-                <input type="submit" value="Cerrar" class="btn btn--close" />
+                <!-- <input type="submit" value="Cerrar" class="btn btn--close" /> -->
+                <!-- <a href="" class="btn btn--close">Cerrar</a> -->
+                <p class="btn btn--close">Cerrar</p>
                
               </div>
             </div>

@@ -9,9 +9,104 @@ const $formModal = $d.forms["form-update"];
 
 $formModal.addEventListener("submit", function (event) {
   event.preventDefault();
-
-  console.log(event);
+  preActualizar(this, this.dataset["type"]);
 });
+
+async function preActualizar(form, tipoTabla) {
+  // Datos del formulario  a actualizar
+  let datosForm = getDatosForm(form, tipoTabla);
+
+  let queryString = createQueryString(datosForm);
+
+  const { xhr, estado } = await ajax(
+    `../php/php-sql-update/sql-${files[tipoTabla]}?${queryString}`
+  );
+
+  // Mostrar formulario con los datos a actualizar
+  let data = JSON.parse(xhr.responseText);
+  // console.log(data);
+
+  let $modalFooter = $modal.querySelector("#modal-footer");
+
+  $modalFooter.textContent = data.mensaje;
+  $modalFooter.classList.add("modal-footer--show");
+
+  setTimeout(() => {
+    $modalFooter.classList.remove("modal-footer--show");
+  }, 5000);
+}
+
+function getDatosForm(form, tipoTabla) {
+  if (tipoTabla === "EMPLEADOS") return getDatosFormEmpleado(form);
+  if (tipoTabla === "CLIENTES") return getDatosFormCliente(form);
+  if (tipoTabla === "CONDUCTOR") return getDatosFormConductor(form);
+}
+
+function getDatosFormEmpleado(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let direccion = form.elements["direccion"].value;
+  let edad = form.elements["edad"].value;
+  edad = edad == "" ? "0" : edad;
+  let estado = form.elements["estado"].value;
+  let telefono = form.elements["telefono"].value;
+  let sueldo = form.elements["sueldo"].value;
+  sueldo = sueldo == "" ? "0" : sueldo;
+
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    direccion,
+    edad,
+    estado,
+    telefono,
+    sueldo,
+  };
+
+  return datos;
+}
+function getDatosFormCliente(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let direccion = form.elements["direccion"].value;
+  let edad = form.elements["edad"].value;
+  edad = edad == "" ? "0" : edad;
+  let nacionalidad = form.elements["nacionalidad"].value;
+  let estado = form.elements["estado"].value;
+  let telefono = form.elements["telefono"].value;
+  let estudios = form.elements["estudios"].value;
+
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    direccion,
+    edad,
+    nacionalidad,
+    estado,
+    telefono,
+    estudios,
+  };
+
+  return datos;
+}
+function getDatosFormConductor(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let telefono = form.elements["telefono"].value;
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    telefono,
+  };
+
+  return datos;
+}
 $selectTablas.addEventListener("click", () => selectedOption());
 $form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -20,9 +115,6 @@ $form.addEventListener("submit", function (event) {
     let tablaSelected = $selectTablas.children[index].value;
     let filtro = $form["busqueda"].value;
     buscar(tablaSelected, filtro);
-    //let file = files[tablaSelected];
-    // this.setAttribute("action", `php/${file}`);
-    // this.submit();
     return;
   }
   alert("Seleccione una tabla");
@@ -165,6 +257,9 @@ async function cargarModalFormUpdate(data, tabla) {
 
   // Retorna un contenedor con los datos para agregar al form del modal
   let formUpdate = formulario.xhr.responseText;
+
+  // Para indenficar el tipo de objeto
+  $formModal.dataset["type"] = tabla;
   $formModal.innerHTML = formUpdate;
   $modal.querySelector(
     "#modal-subtitle"
