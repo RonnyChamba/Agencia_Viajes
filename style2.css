@@ -113,3 +113,17 @@
 .table tbody tr {
   background-color: #f2f2f2;
 }
+
+/* Modal update */
+.modal--update .btn {
+  width: 150px;
+}
+.modal--update .btn--close {
+  background-color: darkred;
+}
+.modal--update .row {
+  justify-content: space-between;
+}
+.modal--update .modal-subtitle {
+  text-align: left;
+}

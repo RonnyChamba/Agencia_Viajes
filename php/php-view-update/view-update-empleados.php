@@ -107,8 +107,13 @@ $arreglo = json_decode($data, true);
               />
             </div>
             <div class="row col-2 row--flex">
-              <input type="submit" value="Actualizar" class="btn btn--send" />
-              <input type="reset" value="Limpiar" class="btn btn--reset" />
+              <div>
+                <input type="submit" value="Actualizar" class="btn btn--send" />
+                <input type="reset" value="Cancelar" class="btn btn--reset" />
+              </div>
+              <div>
+                <button  id="close-modal"  class="btn btn--close"  >Cerrar</button>
+              </div>
             </div>
           </div>
         </form>
