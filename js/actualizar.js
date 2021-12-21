@@ -1,7 +1,9 @@
+import { ajax, createQueryString } from "./ajax.js";
 const $d = document;
 const $form = $d.forms["form-search"];
 const $selectTablas = $form["select-tabla"];
 const $selectFiltro = $form["select-filtro"];
+const $modal = document.getElementById("modal");
 
 $selectTablas.addEventListener("click", () => selectedOption());
 $form.addEventListener("submit", function (event) {
@@ -9,9 +11,11 @@ $form.addEventListener("submit", function (event) {
   let index = $selectTablas.selectedIndex;
   if (index != -1) {
     let tablaSelected = $selectTablas.children[index].value;
-    let file = files[tablaSelected];
-    this.setAttribute("action", `php/${file}`);
-    this.submit();
+    let filtro = $form["busqueda"].value;
+    buscar(tablaSelected, filtro);
+    //let file = files[tablaSelected];
+    // this.setAttribute("action", `php/${file}`);
+    // this.submit();
     return;
   }
   alert("Seleccione una tabla");
@@ -129,3 +133,45 @@ function createOptionFragment(objData) {
   return fragment;
 }
 setTablas();
+
+function buscar(tabla, parametro = "") {
+  switch (tabla) {
+    case "EMPLEADOS":
+      buscarEmpleado(parametro);
+      break;
+    case "CLIENTES":
+      buscarCliente(parametro);
+      break;
+    case "CONDUCTOR":
+      buscarConductor(parametro);
+      break;
+
+    default:
+      alert("No existe la tabla ", tabla);
+      break;
+  }
+}
+
+async function buscarEmpleado(filtro) {
+  // filtro = "0000000066";
+  let queryString = createQueryString({ filtro, tabla: "empleados" });
+  const { xhr, estado } = await ajax(
+    `../php/consulta-existe.php?${queryString}`
+  );
+  let data = JSON.parse(xhr.responseText);
+  if (data) {
+    queryString = createQueryString({ data: JSON.stringify(data) });
+    // Peticion haci archivos form update
+    const formulario = await ajax(
+      `../php/php-view-update/view-update-empleados.php?${queryString}`
+    );
+
+    let formUpdate = formulario.xhr.responseText;
+    $modal.querySelector("#modal-form").outerHTML = formUpdate;
+    $modal.querySelector("#modal-subtitle").textContent = "Actualizar Empleado";
+    $modal.classList.add("modal--show");
+  } else alert(`El empleado con la cédula ${filtro} no existe`);
+}
+
+function buscarCliente(filtro) {}
+function buscarConductor(filtro) {}
