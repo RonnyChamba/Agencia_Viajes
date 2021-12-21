@@ -26,7 +26,6 @@ async function preActualizar(form, tipoTabla) {
   let data = JSON.parse(xhr.responseText);
   // console.log(data);
   let $modalFooter = $modal.querySelector("#modal-footer");
-
   $modalFooter.textContent = data.mensaje;
   $modalFooter.classList.add("modal-footer--show");
 
@@ -35,77 +34,6 @@ async function preActualizar(form, tipoTabla) {
   }, 5000);
 }
 
-function getDatosForm(form, tipoTabla) {
-  if (tipoTabla === "EMPLEADOS") return getDatosFormEmpleado(form);
-  if (tipoTabla === "CLIENTES") return getDatosFormCliente(form);
-  if (tipoTabla === "CONDUCTOR") return getDatosFormConductor(form);
-}
-
-function getDatosFormEmpleado(form) {
-  let cedula = form.elements["cedula"].value;
-  let nombres = form.elements["nombres"].value;
-  let apellidos = form.elements["apellidos"].value;
-  let direccion = form.elements["direccion"].value;
-  let edad = form.elements["edad"].value;
-  edad = edad == "" ? "0" : edad;
-  let estado = form.elements["estado"].value;
-  let telefono = form.elements["telefono"].value;
-  let sueldo = form.elements["sueldo"].value;
-  sueldo = sueldo == "" ? "0" : sueldo;
-
-  const datos = {
-    cedula,
-    nombres,
-    apellidos,
-    direccion,
-    edad,
-    estado,
-    telefono,
-    sueldo,
-  };
-
-  return datos;
-}
-function getDatosFormCliente(form) {
-  let cedula = form.elements["cedula"].value;
-  let nombres = form.elements["nombres"].value;
-  let apellidos = form.elements["apellidos"].value;
-  let direccion = form.elements["direccion"].value;
-  let edad = form.elements["edad"].value;
-  edad = edad == "" ? "0" : edad;
-  let nacionalidad = form.elements["nacionalidad"].value;
-  let estado = form.elements["estado"].value;
-  let telefono = form.elements["telefono"].value;
-  let estudios = form.elements["estudios"].value;
-
-  const datos = {
-    cedula,
-    nombres,
-    apellidos,
-    direccion,
-    edad,
-    nacionalidad,
-    estado,
-    telefono,
-    estudios,
-  };
-
-  return datos;
-}
-function getDatosFormConductor(form) {
-  let cedula = form.elements["cedula"].value;
-  let nombres = form.elements["nombres"].value;
-  let apellidos = form.elements["apellidos"].value;
-  let telefono = form.elements["telefono"].value;
-  const datos = {
-    cedula,
-    nombres,
-    apellidos,
-    telefono,
-  };
-
-  return datos;
-}
 $selectTablas.addEventListener("click", () => selectedOption());
 $form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -119,6 +47,10 @@ $form.addEventListener("submit", function (event) {
   alert("Seleccione una tabla");
 });
 
+$modal.addEventListener("click", function (event) {
+  if (event.target.matches("p#modal-close"))
+    this.classList.remove("modal--show");
+});
 const tablas = {
   EMPLEADOS: "EMPLEADOS",
   // TIPO_VIAJE: "TIPO VIAJES",
@@ -264,4 +196,75 @@ async function cargarModalFormUpdate(data, tabla) {
     "#modal-subtitle"
   ).textContent = `Actualizar  ${tabla.toLowerCase()} `;
   $modal.classList.add("modal--show");
+}
+function getDatosForm(form, tipoTabla) {
+  if (tipoTabla === "EMPLEADOS") return getDatosFormEmpleado(form);
+  if (tipoTabla === "CLIENTES") return getDatosFormCliente(form);
+  if (tipoTabla === "CONDUCTOR") return getDatosFormConductor(form);
+}
+
+function getDatosFormEmpleado(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let direccion = form.elements["direccion"].value;
+  let edad = form.elements["edad"].value;
+  edad = edad == "" ? "0" : edad;
+  let estado = form.elements["estado"].value;
+  let telefono = form.elements["telefono"].value;
+  let sueldo = form.elements["sueldo"].value;
+  sueldo = sueldo == "" ? "0" : sueldo;
+
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    direccion,
+    edad,
+    estado,
+    telefono,
+    sueldo,
+  };
+
+  return datos;
+}
+function getDatosFormCliente(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let direccion = form.elements["direccion"].value;
+  let edad = form.elements["edad"].value;
+  edad = edad == "" ? "0" : edad;
+  let nacionalidad = form.elements["nacionalidad"].value;
+  let estado = form.elements["estado"].value;
+  let telefono = form.elements["telefono"].value;
+  let estudios = form.elements["estudios"].value;
+
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    direccion,
+    edad,
+    nacionalidad,
+    estado,
+    telefono,
+    estudios,
+  };
+
+  return datos;
+}
+function getDatosFormConductor(form) {
+  let cedula = form.elements["cedula"].value;
+  let nombres = form.elements["nombres"].value;
+  let apellidos = form.elements["apellidos"].value;
+  let telefono = form.elements["telefono"].value;
+  const datos = {
+    cedula,
+    nombres,
+    apellidos,
+    telefono,
+  };
+
+  return datos;
 }

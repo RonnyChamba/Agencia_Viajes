@@ -108,7 +108,7 @@ $arreglo = json_decode($data, true);
               <div>
                 <!-- <input type="submit" value="Cerrar" class="btn btn--close" /> -->
                 <!-- <a href="" class="btn btn--close">Cerrar</a> -->
-                <p class="btn btn--close">Cerrar</p>
+                <p class="btn btn--close" id="modal-close">Cerrar</p>
                
               </div>
             </div>

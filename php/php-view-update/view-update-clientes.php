@@ -119,7 +119,7 @@ $arreglo = json_decode($data, true);
                 <input type="reset" value="Cancelar" class="btn btn--reset" />
               </div>
               <div>
-                <input type="submit" value="Cerrar" class="btn btn--close" />
+                <p class="btn btn--close" id="modal-close">Cerrar</p>
                
               </div>
       </div>  
