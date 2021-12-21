@@ -25,7 +25,6 @@ async function preActualizar(form, tipoTabla) {
   // Mostrar formulario con los datos a actualizar
   let data = JSON.parse(xhr.responseText);
   // console.log(data);
-
   let $modalFooter = $modal.querySelector("#modal-footer");
 
   $modalFooter.textContent = data.mensaje;

@@ -14,6 +14,7 @@ $arreglo = json_decode($data, true);
                 class="form__input"
                 name="cedula"
                 id="cedula"
+                readonly
                 value="<?php echo  $arreglo['CLIENTES_CED']?>"
                 required
                 
