@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliminar</title>
+    <link
+      href="https://file.myfontastic.com/JUwFAwWE8oUWFGdiTZSWaX/icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section class="content content--header">
+        <header class="header header--flex">
+          <h1 class="title">Eliminar Datos Agencia de Viaje</h1>
+          <p class="icon-github">
+            <a
+              href="https://github.com/RonnyChamba/Agencia_Viajes"
+              target="_blank"
+              class="link"
+              >Descargar Proyecto</a
+            >
+          </p>
+        </header>
+      </section>
+      <section class="content content--main">
+        <div class="row">
+          <h2 class="subtitle">Datos</h2>
+        </div>
+        <form
+          action=""
+          name="form-search"
+          class="form form--search"
+          method="POST"
+        >
+          <input type="hidden" name="action" value="search" />
+          <div class="row row--flex">
+            <div class="row-form-item">
+              <label for="select-tablas-js">Seleccione Tabla</label>
+              <select
+                name="select-tabla"
+                id="select-tablas-js"
+                class="select-busqueda select-busqueda--tabla"
+              ></select>
+              <!-- <span class="icon-search"></span>
+              -->
+            </div>
+            <div class="row-form-item">
+              <label for="">Campo Clave</label>
+              <select
+                name="select-filtro"
+                id="select-filtro-js"
+                class="select-busqueda select-busqueda--filtro"
+              ></select>
+            </div>
+            <div class="row-form-item">
+              <input
+                type="text"
+                name="busqueda"
+                placeholder="Ingresa algo..."
+                required
+              />
+            </div>
+            <div class="row-form-item">
+              <input type="submit" class="btn btn--search" value="Buscar" />
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+    <section class="modal modal--update" id="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">Agencia de Viajes</h2>
+        <div class="modal-main" id="modal-main">
+          <h3 class="modal-subtitle" id="modal-subtitle">Actualizar Persona</h3>
+          <form
+            action=""
+            id="modal-form"
+            method="post"
+            name="form-update"
+            class="form form--empleados"
+          ></form>
+
+          <!-- Aqui va el contenido dinamico -->
+        </div>
+      </div>
+    </section>
+    <div class="modal-footer" id="modal-footer"></div>
+    <script src="js/eliminar.js" type="module"></script>
+  </body>
+</html>
